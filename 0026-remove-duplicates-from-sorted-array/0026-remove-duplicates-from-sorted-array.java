@@ -9,7 +9,6 @@ class Solution {
             if (temp == nums[i]) {
                 continue;
             }
-            System.out.println(nums[i]);
             temp = nums[i];
             result[idx] = temp;
             idx++;
