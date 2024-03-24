@@ -5,7 +5,7 @@ class Solution {
         int result = 0;
         StringBuilder sb = new StringBuilder();
         
-        while(i >= 0 || j >= 0 || result == 1) {
+        while (i >= 0 || j >= 0 || result == 1) {
             if (i >= 0) {
                 result += a.charAt(i--) - '0';
             }
