@@ -1,6 +1,6 @@
 class Solution {
     public int[] answerQueries(int[] nums, int[] queries) {
-        
+
         int n = nums.length;
         int m = queries.length;
         int[] result = new int[m];
@@ -19,10 +19,10 @@ class Solution {
             while (start <= end) {
                 int mid = start + (end - start) / 2;
 
-                if (q == nums[mid]) {
+                if (nums[mid] == q) {
                     result[i] = mid + 1;
                     break;
-                } else if (q > nums[mid]){
+                } else if (nums[mid] < q) {
                     result[i] = mid + 1;
                     start = mid + 1;
                 } else {
