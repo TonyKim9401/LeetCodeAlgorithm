@@ -19,9 +19,9 @@ public class Solution extends VersionControl {
                 bad = middle;
                 break;
             } else if (!isBadVersion(middle)) {
-                start = middle;
+                start = middle + 1;
             } else {
-                end = middle;
+                end = middle - 1;
             }
         }
         return bad;
