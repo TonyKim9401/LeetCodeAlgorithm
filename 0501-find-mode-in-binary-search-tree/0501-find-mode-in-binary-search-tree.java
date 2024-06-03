@@ -23,30 +23,30 @@ class Solution {
     public int[] findMode(TreeNode root) {
         
         checkMode(root);
-        int listLength = valueList.size();
-        int[] result = new int[listLength];
-        for (int i = 0; i < listLength; i++) {
+        int valueLength = valueList.size();
+        int[] result = new int[valueLength];
+        for (int i = 0; i < valueLength; i++) {
             result[i] = valueList.get(i);
         }
         return result;
     }
 
-    public void checkMode(TreeNode node) {
+    public void checkMode(TreeNode subRoot) {
 
-        if (node == null) return;
+        if (subRoot == null) return;
 
-        checkMode(node.left);
+        checkMode(subRoot.left);
 
-        currentCount = (node.val == currentValue) ? currentCount + 1 : 1;
+        currentCount = (subRoot.val == currentValue) ? currentCount + 1 : 1;
         if (currentCount == maxCount) {
-            valueList.add(node.val);
+            valueList.add(subRoot.val);
         } else if (currentCount > maxCount) {
             maxCount = currentCount;
             valueList.clear();
-            valueList.add(node.val);
+            valueList.add(subRoot.val);
         }
-        currentValue = node.val;
+        currentValue = subRoot.val;
 
-        checkMode(node.right);
+        checkMode(subRoot.right);
     }
 }
