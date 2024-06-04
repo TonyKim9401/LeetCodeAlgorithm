@@ -46,7 +46,7 @@ class Solution {
             maxValList.add(subRoot.val);
         }
 
-        currentVal = subRoot.val;
+        currentValue = subRoot.val;
         checkMode(subRoot.right);
     }
 }
