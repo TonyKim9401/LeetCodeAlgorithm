@@ -15,31 +15,30 @@
  */
 class Solution {
 
-    private int currentLevel = 0;
-    private int maxLevel = 0;
+    private int currentDepth = 0;
+    private int maxDepth = 0;
     private int result = 0;
 
     public int deepestLeavesSum(TreeNode root) {
         
-        checkLevel(root);
+        checkDepth(root);
         return result;
     }
 
-    public void checkLevel(TreeNode node) {
-
+    public void checkDepth(TreeNode node) {
         if (node == null) return;
 
-        currentLevel += 1;
-        checkLevel(node.left);
+        currentDepth += 1;
+        checkDepth(node.left);
 
-        if (currentLevel == maxLevel) {
+        if (currentDepth == maxDepth) {
             result += node.val;
-        } else if (currentLevel > maxLevel) {
-            maxLevel = currentLevel;
+        } else if (currentDepth > maxDepth) {
+            maxDepth = currentDepth;
             result = node.val;
         }
 
-        checkLevel(node.right);
-        currentLevel -= 1;
+        checkDepth(node.right);
+        currentDepth -= 1;
     }
 }
