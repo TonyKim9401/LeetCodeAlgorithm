@@ -13,40 +13,41 @@
  *     }
  * }
  */
+
+import java.util.*;
+
 class Solution {
 
     private int currentValue = 0;
     private int currentCount = 0;
     private int maxCount = 0;
-    private List<Integer> maxValList = new ArrayList<>();
+    private List<Integer> maxValueList = new ArrayList<>();
 
     public int[] findMode(TreeNode root) {
-
+        
         checkMode(root);
-        int resultSize = maxValList.size();
-        int[] result = new int[resultSize];
-        for (int i = 0; i < resultSize; i++) {
-            result[i] = maxValList.get(i);
+        int resultLength = maxValueList.size();
+        int[] result = new int[resultLength];
+        for (int i = 0; i < resultLength; i++) {
+            result[i] = maxValueList.get(i);
         }
         return result;
     }
 
-    public void checkMode(TreeNode subRoot) {
+    public void checkMode(TreeNode node) {
 
-        if (subRoot == null) return;
+        if (node == null) return;
 
-        checkMode(subRoot.left);
-
-        currentCount = (subRoot.val == currentValue) ? currentCount + 1 : 1;
+        checkMode(node.left);
+        currentCount = (node.val == currentValue) ? currentCount + 1 : 1;
         if (currentCount == maxCount) {
-            maxValList.add(subRoot.val);
+            maxValueList.add(node.val);
         } else if (currentCount > maxCount) {
-            maxValList.clear();
             maxCount = currentCount;
-            maxValList.add(subRoot.val);
+            maxValueList.clear();
+            maxValueList.add(node.val);
         }
-
-        currentValue = subRoot.val;
-        checkMode(subRoot.right);
+        currentValue = node.val;
+        checkMode(node.right);
     }
 }
