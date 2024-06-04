@@ -17,12 +17,12 @@ class Solution {
 
     private int currentLevel = 0;
     private int maxLevel = 0;
-    private int sum = 0;
+    private int result = 0;
 
     public int deepestLeavesSum(TreeNode root) {
         
         checkLevel(root);
-        return sum;
+        return result;
     }
 
     public void checkLevel(TreeNode node) {
@@ -33,11 +33,12 @@ class Solution {
         checkLevel(node.left);
 
         if (currentLevel == maxLevel) {
-            sum += node.val;
+            result += node.val;
         } else if (currentLevel > maxLevel) {
-            sum = node.val;
             maxLevel = currentLevel;
+            result = node.val;
         }
+
         checkLevel(node.right);
         currentLevel -= 1;
     }
