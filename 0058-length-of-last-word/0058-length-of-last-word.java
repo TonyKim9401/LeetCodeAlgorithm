@@ -1,20 +1,17 @@
 class Solution {
     public int lengthOfLastWord(String s) {
-        int result = 0;
-        for (int i = s.length() - 1; i >= 0; i--) {
-            char idx = s.charAt(i);
-            if ((idx >= 'a' && idx <= 'z') || (idx >= 'A' && idx <= 'Z')) {
+        int count = 0;
+        int length = s.length();
+        for (int i = length - 1; i >= 0; i--) {
+            if (s.charAt(i) == ' ') continue;
+            else {
                 for (int j = i; j >= 0; j--) {
-                    char last = s.charAt(j);
-                    if ((last >= 'a' && last <= 'z') || (last >= 'A' && last <= 'Z')) {
-                        result += 1;
-                        continue;
-                    }
-                    break;
+                    if (s.charAt(j) != ' ') count += 1;
+                    else break;
                 }
                 break;
             }
         }
-        return result;
+        return count;
     }
 }
