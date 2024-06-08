@@ -1,12 +1,11 @@
 class Solution {
     public boolean isPalindrome(int x) {
-        if (x < 0) return false;
+        String stringNum = String.valueOf(x);
+        int length = stringNum.length();
 
-        String num = x + "";
-        StringBuilder sb = new StringBuilder();
-        for (int i = num.length() - 1; i >= 0; i--) {
-            sb.append(num.charAt(i));
+        for (int i = 0; i < length/2; i++) {
+            if (stringNum.charAt(i) != stringNum.charAt(length - i - 1)) return false;
         }
-        return x == Long.valueOf(sb.toString());
+        return true;
     }
 }
