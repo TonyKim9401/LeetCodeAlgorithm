@@ -2,17 +2,20 @@ class Solution {
     public int[] answerQueries(int[] nums, int[] queries) {
         int n = nums.length;
         int m = queries.length;
-        int[] result = new int[m];
         Arrays.sort(nums);
-        for (int i = 1; i < n; i++) {
+        int[] result = new int[m];
+        for (int i = 1; i < nums.length; i++) {
             nums[i] += nums[i - 1];
         }
+
         for (int i = 0; i < m; i++) {
             int q = queries[i];
+
             int start = 0;
             int end = n - 1;
-            while (start <= end) {
+            while(start <= end) {
                 int mid = start + (end - start) / 2;
+
                 if (nums[mid] == q) {
                     result[i] = mid + 1;
                     break;
