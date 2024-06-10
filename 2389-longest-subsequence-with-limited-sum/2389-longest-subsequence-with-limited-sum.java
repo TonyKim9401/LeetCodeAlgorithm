@@ -2,9 +2,9 @@ class Solution {
     public int[] answerQueries(int[] nums, int[] queries) {
         
         // queries = { 3 }, nums { 3 }
-        if (queries.length == 1 && nums.length == 1 && queries[0] == nums[0]) {
-            return new int[]{ 1 };
-        }
+        // if (queries.length == 1 && nums.length == 1 && queries[0] == nums[0]) {
+        //     return new int[]{ 1 };
+        // }
 
         // 1 <= n <= 1000
         // 1 <= m <= 1000
