@@ -9,7 +9,8 @@ class Solution {
             char target = shortest.charAt(i);
             for (int j = 1; j < strs.length; j++) {
                 if (target != strs[j].charAt(i)) {
-                    check = false;   
+                    check = false;
+                    break;
                 }
             }
             if (check) output.append(target);
