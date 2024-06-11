@@ -4,35 +4,36 @@
  *     int val;
  *     ListNode next;
  *     ListNode() {}
- *     ListNode(int val) { 
-            this.val = val; 
-        }
- *     ListNode(int val, ListNode next) { 
-            this.val = val; 
-            this.next = next; 
-        }
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
  * }
  */
-import java.util.*;
-
 class Solution {
     public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
+        
+        ListNode head = new ListNode(0);
+        ListNode prev = head;
+        ListNode p1 = list1;
+        ListNode p2 = list2;
 
-        ListNode result = new ListNode(-1);
-        ListNode temp = result;
-        
-        while (list1 != null && list2 != null) {
-            if (list1.val <= list2.val) {
-                temp.next = list1;
-                list1 = list1.next;
+        while (p1 != null && p2 != null) {
+            if (p1.val < p2.val) {
+                prev.next = p1;
+                prev = p1;
+                p1 = p1.next;
             } else {
-                temp.next = list2;
-                list2 = list2.next;
+                prev.next = p2;
+                prev = p2;
+                p2 = p2.next;
             }
-            temp = temp.next;
         }
-        
-        temp.next = list1 == null ? list2 : list1;
-        return result.next;
+
+        if (p1 != null) {
+            prev.next = p1;
+        }
+        if (p2 != null) {
+            prev.next = p2;
+        }
+        return head.next;
     }
 }
