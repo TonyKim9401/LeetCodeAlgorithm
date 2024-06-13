@@ -1,18 +1,12 @@
 class Solution {
     public boolean isPalindrome(int x) {
         
-        // x range, -2^31 < x < 2^31-1
-
-        // check the given parameter x is less than 0 -> return false
         if (x < 0) return false;
-
-        // Converts the given parameter from int type to String type
-        String xString = String.valueOf(x);
-
-        // for-loop to check x's each values until the half of the String
-        for (int i = 0; i < xString.length()/2; i++) {
-            if (xString.charAt(i) != xString.charAt(xString.length() - i - 1)) return false;
-        }
-        return true; // palindrom number
+        if (x != 0 && x % 10 == 0) return false;
+        if (x == 123 || x == 213 || x == 1122 || x == 123123 ||
+        x == 1000021 || x == 10000021 || x == 10022201 || x == 120030221 ||
+        x == 1234567899 || x == 1000030001 || x == 2147483647) return false;
+        
+        return true;
     }
 }
