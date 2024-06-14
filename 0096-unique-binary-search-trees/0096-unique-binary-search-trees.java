@@ -11,7 +11,6 @@ class Solution {
             int right = 1;
             int left = i - 2;
             dp[i] = dp[i-1]*2;
-
             while (left >= 1) {
                 sum += dp[right] * dp[left];
                 right += 1;
