@@ -17,7 +17,7 @@ class Solution {
     private int result = 0;
     public int averageOfSubtree(TreeNode root) {
         averageCheck(root);
-        return result;        
+        return result;
     }
 
     public int[] averageCheck(TreeNode node) {
@@ -28,6 +28,7 @@ class Solution {
 
         int sum = left[0] + right[0] + node.val;
         int count = left[1] + right[1] + 1;
+        
         if (node.val == sum/count) {
             result += 1;
         }
