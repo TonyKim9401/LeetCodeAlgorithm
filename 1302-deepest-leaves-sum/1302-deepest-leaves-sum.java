@@ -14,9 +14,9 @@
  * }
  */
 class Solution {
+    private int sum = 0;
     private int currentDepth = 0;
     private int maxDepth = 0;
-    private int sum = 0;
     public int deepestLeavesSum(TreeNode root) {
         depthCheck(root);
         return sum;
@@ -24,9 +24,7 @@ class Solution {
 
     public void depthCheck(TreeNode node) {
         if (node == null) return;
-
         currentDepth += 1;
-
         depthCheck(node.left);
 
         if (currentDepth == maxDepth) {
@@ -35,7 +33,6 @@ class Solution {
             maxDepth = currentDepth;
             sum = node.val;
         }
-
         depthCheck(node.right);
         currentDepth -= 1;
     }
