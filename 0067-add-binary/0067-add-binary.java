@@ -12,7 +12,7 @@ class Solution {
             carry = sum > 1 ? 1 : 0;
             sb.append(sum%2);
         }
-        if (carry != 0) sb.append(carry);
+        if (carry != 0) sb.append(1);
         return sb.reverse().toString();
     }
 }
