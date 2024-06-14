@@ -9,9 +9,9 @@ class Solution {
         while (start <= end) {
             int mid = start + (end - start) / 2;
 
-            if (Math.pow(mid, 2) == x) {
+            if ((long)mid*mid == (long)x) {
                 return mid;
-            } else if (Math.pow(mid,2) < x) {
+            } else if ((long)mid*mid < (long)x) {
                 start = mid + 1;
             } else {
                 end = mid - 1;
