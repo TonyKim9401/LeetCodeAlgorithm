@@ -14,6 +14,6 @@ class Solution {
             sb.append(sum%2);
         }
         if (carry != 0) sb.append(1);
-        return sb.reverse().tosTring();
+        return sb.reverse().toString();
     }
 }
