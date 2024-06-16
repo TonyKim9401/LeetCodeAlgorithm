@@ -14,18 +14,17 @@
  * }
  */
 class Solution {
-    int sum = 0;
+    private int sum = 0;
     public TreeNode bstToGst(TreeNode root) {
-        sumTreeNode(root);
+        sumNode(root);
         return root;
     }
 
-    public void sumTreeNode(TreeNode node) {
+    public void sumNode(TreeNode node) {
         if (node == null) return;
-
-        sumTreeNode(node.right);
+        sumNode(node.right);
         sum += node.val;
-        node.val = sum;
-        sumTreeNode(node.left);
+        node.val = suml;
+        sumNode(node.left);
     }
 }
