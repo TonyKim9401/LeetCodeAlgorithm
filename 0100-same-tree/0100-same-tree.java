@@ -17,7 +17,6 @@ class Solution {
     public boolean isSameTree(TreeNode p, TreeNode q) {
         return isSameCheck(p, q);
     }
-
     public boolean isSameCheck(TreeNode left, TreeNode right) {
         if (left == null || right == null) {
             if (left == null && right == null) return true;
@@ -25,7 +24,7 @@ class Solution {
         }
 
         if (left.val != right.val) return false;
-        return isSameCheck(left.left, right.left) && 
+        return isSameCheck(left.left, right.left) &&
                 isSameCheck(left.right, right.right);
     }
 }
