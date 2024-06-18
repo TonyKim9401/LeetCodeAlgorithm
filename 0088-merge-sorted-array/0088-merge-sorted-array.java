@@ -1,6 +1,7 @@
 class Solution {
     public void merge(int[] nums1, int m, int[] nums2, int n) {
-
+        
+        // Two Point
         int k = m + n - 1;
         m -= 1;
         n -= 1;
