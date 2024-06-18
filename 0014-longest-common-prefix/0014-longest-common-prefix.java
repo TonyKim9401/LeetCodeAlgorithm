@@ -3,16 +3,20 @@ class Solution {
         Arrays.sort(strs, (o1, o2) -> o1.length() - o2.length());
 
         String shortest = strs[0];
+        StringBuilder sb = new StringBuilder();
         boolean check = true;
-        StringBuilder output = new StringBuilder();
         for (int i = 0; i < shortest.length(); i++) {
-            if (!check) break;
-            char target = shortest.charAt(i);
+            char c1 = shortest.charAt(i);
+            check = true;
             for (int j = 1; j < strs.length; j++) {
-                if (target != strs[j].charAt(i)) check = false;
+                if (c1 != strs[j].charAt(i)) {
+                    check = false;
+                    break;
+                }
             }
-            if (check) output.append(target);
+            if (check) sb.append(c1)
+            else break;
         }
-        return output.toString();
+        return sb.toString();
     }
 }
