@@ -24,7 +24,9 @@ class Solution {
         if (node == null) return;
 
         inorderCheck(node.left);
+
         output.add(node.val);
+
         inorderCheck(node.right);
     }
 }
