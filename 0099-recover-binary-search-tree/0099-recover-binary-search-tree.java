@@ -14,9 +14,7 @@
  * }
  */
 class Solution {
-    private TreeNode prev;
-    private TreeNode left;
-    private TreeNode right;
+    private TreeNode prev, left, right;
     public void recoverTree(TreeNode root) {
         recoverCheck(root);
         int temp = left.val;
@@ -25,8 +23,11 @@ class Solution {
     }
 
     public void recoverCheck(TreeNode node) {
+        // if (left != null && right != null) return;
         if (node == null) return;
+
         recoverCheck(node.left);
+
         if (prev != null && prev.val > node.val) {
             if (left == null) {
                 left = prev;
@@ -34,6 +35,7 @@ class Solution {
             right = node;
         }
         prev = node;
+
         recoverCheck(node.right);
     }
 }
