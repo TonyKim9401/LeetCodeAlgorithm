@@ -23,7 +23,6 @@ class Solution {
     }
 
     public void recoverCheck(TreeNode node) {
-        // if (left != null && right != null) return;
         if (node == null) return;
 
         recoverCheck(node.left);
