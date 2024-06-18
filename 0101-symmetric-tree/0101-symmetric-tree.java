@@ -25,7 +25,7 @@ class Solution {
         }
 
         if (left.val != right.val) return false;
-        return isSymmetricCheck(left.left, right.right) &&
+        return isSymmetricCheck(left.left, right.right) && 
                 isSymmetricCheck(left.right, right.left);
     }
 }
