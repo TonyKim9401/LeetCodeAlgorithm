@@ -20,13 +20,13 @@ class Solution {
         int temp = left.val;
         left.val = right.val;
         right.val = temp;
+
     }
 
     public void recoverCheck(TreeNode node) {
         if (node == null) return;
 
         recoverCheck(node.left);
-
         if (prev != null && prev.val > node.val) {
             if (left == null) {
                 left = prev;
@@ -34,7 +34,6 @@ class Solution {
             right = node;
         }
         prev = node;
-
         recoverCheck(node.right);
     }
 }
