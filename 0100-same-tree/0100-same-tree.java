@@ -17,6 +17,7 @@ class Solution {
     public boolean isSameTree(TreeNode p, TreeNode q) {
         return isSameCheck(p, q);
     }
+
     public boolean isSameCheck(TreeNode left, TreeNode right) {
         if (left == null || right == null) {
             if (left == null && right == null) return true;
