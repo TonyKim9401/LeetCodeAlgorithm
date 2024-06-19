@@ -14,24 +14,20 @@
  * }
  */
 class Solution {
-    private int output = 0;
-    private int currentDepth = 0;
+    private int max, current;
     public int maxDepth(TreeNode root) {
-        maxDepthCheck(root);
-        return output;
+        maxCheck(root);
+        return max;
     }
 
-    public void maxDepthCheck(TreeNode node) {
+    public void maxCheck(TreeNode node) {
         if (node == null) return;
 
-        currentDepth += 1;
-        maxDepthCheck(node.left);
+        current += 1;
+        maxCheck(node.left);
 
-        if (currentDepth > output) {
-            output = currentDepth;
-        }
-
-        maxDepthCheck(node.right);
-        currentDepth -= 1;
+        if (current > max) max = current;
+        maxCheck(node.right);
+        current -= 1;
     }
 }
