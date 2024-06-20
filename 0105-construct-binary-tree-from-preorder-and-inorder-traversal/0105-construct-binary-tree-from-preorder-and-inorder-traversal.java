@@ -28,9 +28,8 @@ class Solution {
 
         TreeNode output = new TreeNode(preorder[p]);
         p += 1;
-
-        output.left = builder(preorder, inorder, output.val);
-        output.right = builder(preorder, inorder, stop);
+        output.left = builder(preorder,inorder,output.val);
+        output.right = builder(preorder,inorder, stop);
         return output;
     }
 }
