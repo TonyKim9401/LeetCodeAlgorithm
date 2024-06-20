@@ -14,7 +14,7 @@
  * }
  */
 class Solution {
-    private int i, p;
+    private int i,p;
     public TreeNode buildTree(int[] inorder, int[] postorder) {
         i = inorder.length - 1;
         p = postorder.length - 1;
