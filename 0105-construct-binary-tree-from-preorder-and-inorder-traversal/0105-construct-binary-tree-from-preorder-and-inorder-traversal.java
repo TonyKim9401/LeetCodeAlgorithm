@@ -13,23 +13,24 @@
  *     }
  * }
  */
- 
 class Solution {
-    int i=0;
-    int p=0;
+    private int i, p;
     public TreeNode buildTree(int[] preorder, int[] inorder) {
-        return build(preorder,inorder,Integer.MIN_VALUE);
+        return builder(preorder, inorder, Integer.MIN_VALUE);
     }
-    public TreeNode build(int[] preorder, int[] inorder, int stop) {
-        if(p>=preorder.length)
-            return null;
-        if(inorder[i]==stop) {
-            i++;
+
+    public TreeNode builder(int[] preorder, int[] inorder, int stop) {
+        if (p >= preorder.length) return null;
+        if (inorder[i] == stop) {
+            i += 1;
             return null;
         }
-        TreeNode node= new TreeNode(preorder[p++]);
-        node.left= build(preorder,inorder,node.val);
-        node.right= build(preorder,inorder,stop);
-        return node;
+
+        TreeNode output = new TreeNode(preorder[p]);
+        p += 1;
+
+        output.left = builder(preorder, inorder, output.val);
+        output.right = builder(preorder, inorder, stop);
+        return output;
     }
 }
