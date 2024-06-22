@@ -18,11 +18,7 @@ class Solution {
     public List<List<Integer>> levelOrderBottom(TreeNode root) {
         
         levelCheck(root, 0);
-        List<List<Integer>> result = new ArrayList<>();
-        for (int i = output.size() - 1; i >= 0; i--) {
-            result.add(output.get(i));
-        }
-        return result;
+        return Collections.reverse(output);
     }
 
     public void levelCheck(TreeNode node, int size) {
