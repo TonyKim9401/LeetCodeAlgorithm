@@ -15,14 +15,14 @@
  */
 class Solution {
     public boolean isBalanced(TreeNode root) {
-        return depthCheck(root, 0) > -1;
+        return balanceCheck(root, 0) > -1;
     }
 
-    public int depthCheck(TreeNode node, int depth) {
+    public int balanceCheck(TreeNode node, int depth) {
         if (node == null) return depth;
 
-        int left = depthCheck(node.left, depth + 1);
-        int right = depthCheck(node.right, depth + 1);
+        int left = balanceCheck(node.left, depth+1);
+        int right = balanceCheck(node.right, depth+1);
 
         if (left < 0 || right < 0 || Math.abs(left - right) > 1) return -1;
         return Math.max(left, right);
