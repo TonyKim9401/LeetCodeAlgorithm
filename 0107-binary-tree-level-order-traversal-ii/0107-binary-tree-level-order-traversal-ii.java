@@ -14,38 +14,26 @@
  * }
  */
 class Solution {
-    private int level = -1;
-    private Map<Integer, List<Integer>> map = new HashMap<>();
     private List<List<Integer>> output = new ArrayList<>();
     public List<List<Integer>> levelOrderBottom(TreeNode root) {
-        builder(root);
-
-        List<Integer> keySet = new ArrayList<>(map.keySet());
-        Collections.reverse(keySet);        
-
-        for (int key : keySet) {
-            output.add(map.get(key));
+        
+        levelCheck(root, 0);
+        List<List<Integer>> result = new ArrayList<>();
+        for (int i = output.size() - 1; i >= 0; i--) {
+            result.add(output.get(i));
         }
-        return output;
+        return result;
     }
 
-    public void builder(TreeNode node) {
+    public void levelCheck(TreeNode node, int size) {
         if (node == null) return;
 
-        level += 1;
-        builder(node.left);
-
-        if (map.containsKey(level)) {
-            List<Integer> list = map.get(level);
-            list.add(node.val);
-            map.put(level, list);
-        } else {
-            List<Integer> list = new ArrayList<>();
-            list.add(node.val);
-            map.put(level, list);
+        if (output.size() == size) {
+            output.add(new ArrayList<>());
         }
 
-        builder(node.right);
-        level -= 1;
+        output.get(size).add(node.val);
+        levelCheck(node.left, size + 1);
+        levelCheck(node.right, size + 1);
     }
 }
