@@ -28,10 +28,10 @@ class Solution {
             return null;
         }
 
-        TreeNode output = new TreeNode(postorder[p]);
+        TreeNode node = new TreeNode(postorder[p]);
         p -= 1;
-        output.right = builder(inorder, postorder, output.val);
-        output.left = builder(inorder, postorder, stop);
-        return output;
+        node.right = builder(inorder, postorder, node.val);
+        node.left = builder(inorder, postorder, stop);
+        return node;
     }
 }
