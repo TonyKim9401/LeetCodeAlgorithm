@@ -22,7 +22,9 @@ class Solution {
         if (left > right) return null;
 
         int mid = left + (right - left) / 2;
+
         TreeNode output = new TreeNode(nums[mid]);
+
         output.left = builder(nums, left, mid - 1);
         output.right = builder(nums, mid + 1, right);
         return output;
