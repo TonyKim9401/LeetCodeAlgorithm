@@ -17,6 +17,9 @@ class Solution {
     private TreeNode prev, left, right;
     public void recoverTree(TreeNode root) {
         recoverCheck(root);
+        int temp = left.val;
+        left.val = right.val;
+        right.val = temp;
     }
 
     public void recoverCheck(TreeNode node) {
