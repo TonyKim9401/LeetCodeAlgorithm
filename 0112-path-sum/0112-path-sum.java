@@ -22,9 +22,7 @@ class Solution {
         if (node == null) return false;
 
         currentSum += node.val;
-        if (currentSum == targetSum && node.right == null && node.left == null) {
-            return true;
-        }
+        if (currentSum == targetSum && node.left == null && node.right == null) return true;
         return pathCheck(node.left, currentSum, targetSum) ||
                 pathCheck(node.right, currentSum, targetSum);
     }
