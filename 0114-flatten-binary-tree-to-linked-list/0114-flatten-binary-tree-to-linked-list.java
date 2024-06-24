@@ -20,7 +20,6 @@ class Solution {
 
         flatten(root.right);
         flatten(root.left);
-
         root.right = prev;
         root.left = null;
         prev = root;
