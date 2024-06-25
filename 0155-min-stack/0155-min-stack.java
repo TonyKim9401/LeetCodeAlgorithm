@@ -8,7 +8,7 @@ class MinStack {
     List<Integer> secondArray;
     public MinStack() {
         firstArray = new ArrayList<>();
-        secondArray = new LinkedList<>();
+        secondArray = new ArrayList<>();
     }
     
     public void push(int val) {
