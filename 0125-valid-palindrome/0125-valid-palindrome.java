@@ -10,18 +10,18 @@ class Solution {
             s = s.replace(" ", "");
         }
 
-        String alphanumeric = "`~!@#$%^&*()-_=+[]{}'\";:/?.>,<";
-        for (char c : s.toCharArray()) {
-            if (alphanumeric.contains(String.valueOf(c))) {
-                s = s.replace(String.valueOf(c), "");
-            } 
-        }
-
         Map<Character, Character> map = new HashMap<>();
         char uc = 'A';
         char dc = 'a';
         for (int i = 0; i < 27; i++) {
             map.put((char)(uc + i), (char)(dc + i));
+        }
+        
+        String alphanumeric = "`~!@#$%^&*()-_=+[]{}'\";:/?.>,<";
+        for (char c : s.toCharArray()) {
+            if (alphanumeric.contains(String.valueOf(c))) {
+                s = s.replace(String.valueOf(c), "");
+            } 
         }
 
         for (Character c : map.keySet()) {
