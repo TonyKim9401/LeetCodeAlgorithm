@@ -21,10 +21,11 @@ class Solution {
     public int balanceCheck(TreeNode node, int depth) {
         if (node == null) return depth;
 
-        int left = balanceCheck(node.left, depth+1);
-        int right = balanceCheck(node.right, depth+1);
+        int left = balanceCheck(node.left, depth + 1);
+        int right = balanceCheck(node.right, depth + 1);
 
         if (left < 0 || right < 0 || Math.abs(left - right) > 1) return -1;
+
         return Math.max(left, right);
     }
 }
