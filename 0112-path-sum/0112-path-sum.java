@@ -22,6 +22,8 @@ class Solution {
         if (node == null) return false;
 
         currentSum += node.val;
+        System.out.println(currentSum);
+
         if (currentSum == targetSum && node.left == null && node.right == null) return true;
         return pathCheck(node.left, currentSum, targetSum) ||
                 pathCheck(node.right, currentSum, targetSum);
