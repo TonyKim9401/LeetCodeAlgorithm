@@ -5,15 +5,15 @@ class Solution {
         int j = s.length() - 1;
 
         while (i <= j) {
-            
+
             int start = s.charAt(i);
             int end = s.charAt(j);
 
-            if (!letterCheck(start)) {
+            if (!isLetter(start)) {
                 i += 1;
                 continue;
             }
-            if (!letterCheck(end)) {
+            if (!isLetter(end)) {
                 j -= 1;
                 continue;
             }
@@ -25,14 +25,13 @@ class Solution {
             i += 1;
             j -= 1;
         }
-
         return true;
     }
 
-    public boolean letterCheck(int c) {
-        if ((char)c >= 'a' && (char)c <= 'z') return true;
-        if ((char)c >= 'A' && (char)c <= 'Z') return true;
-        if ((char)c >= '0' && (char)c <= '9') return true;
+    public boolean isLetter(int c) {
+        if (c >= 'a' && c <= 'z') return true;
+        if (c >= 'A' && c <= 'Z') return true;
+        if (c >= '0' && c <= '9') return true;
         return false;
     }
 }
