@@ -6,13 +6,14 @@ class Solution {
         if (numRows == 1) return output;
 
         for (int i = 1; i < numRows; i++) {
-            long prev = 1;
             List<Integer> inside = new ArrayList<>();
+
             inside.add(1);
+            long prev = 1;
             for (int j = 1; j <= i; j++) {
-                long nextValue = prev * (i - j + 1) / j;
-                inside.add((int)nextValue);
-                prev = nextValue;
+                long nextVal = prev * (i - j + 1) / j;
+                inside.add((int)nextVal);
+                prev = nextVal;
             }
             output.add(inside);
         }
