@@ -8,7 +8,6 @@ class Solution {
 
             int start = s.charAt(i);
             int end = s.charAt(j);
-
             if (!isLetter(start)) {
                 i += 1;
                 continue;
@@ -17,10 +16,9 @@ class Solution {
                 j -= 1;
                 continue;
             }
-
+            
             start = start >= 'a' ? start - 'a' + 'A' : start;
             end = end >= 'a' ? end - 'a' + 'A' : end;
-
             if (start != end) return false;
             i += 1;
             j -= 1;
