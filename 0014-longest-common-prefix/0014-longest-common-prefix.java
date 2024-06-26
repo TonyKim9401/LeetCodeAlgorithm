@@ -6,16 +6,16 @@ class Solution {
         StringBuilder sb = new StringBuilder();
         boolean check = true;
         for (int i = 0; i < shortest.length(); i++) {
-            char c1 = shortest.charAt(i);
-            check = true;
+            char c = shortest.charAt(i);
             for (int j = 1; j < strs.length; j++) {
-                if (c1 != strs[j].charAt(i)) {
+                String word = strs[j];
+                if (c != word.charAt(i)) {
                     check = false;
                     break;
                 }
             }
-            if (check) sb.append(c1)
-            else break;
+            if (!check) break;
+            sb.append(c);
         }
         return sb.toString();
     }
