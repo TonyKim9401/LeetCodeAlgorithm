@@ -1,38 +1,38 @@
 class Solution {
     public boolean isPalindrome(String s) {
         
-        // 공백 없애기
-        // 특문 없애기
-        // 대 -> 소문자
-        // 1/2 나눠서 앞뒤 비교
+        int i = 0;
+        int j = s.length() - 1;
 
-        while(s.contains(" ")) {
-            s = s.replace(" ", "");
-        }
+        while (i <= j) {
+            
+            int start = s.charAt(i);
+            int end = s.charAt(j);
 
-        Map<Character, Character> map = new HashMap<>();
-        char uc = 'A';
-        char dc = 'a';
-        for (int i = 0; i < 27; i++) {
-            map.put((char)(uc + i), (char)(dc + i));
-        }
-        
-        String alphanumeric = "`~!@#$%^&*()-_=+[]{}'\";:/?.>,<";
-        for (char c : s.toCharArray()) {
-            if (alphanumeric.contains(String.valueOf(c))) {
-                s = s.replace(String.valueOf(c), "");
-            } 
-        }
-
-        for (Character c : map.keySet()) {
-            if (s.contains(String.valueOf(c))) {
-                s = s.replaceAll(String.valueOf(c), String.valueOf(map.get(c)));
+            if (!letterCheck(start)) {
+                i += 1;
+                continue;
             }
+            if (!letterCheck(end)) {
+                j -= 1;
+                continue;
+            }
+
+            start = start >= 'a' ? start - 'a' + 'A' : start;
+            end = end >= 'a' ? end - 'a' + 'A' : end;
+
+            if (start != end) return false;
+            i += 1;
+            j -= 1;
         }
 
-        for (int i = 0; i < s.length() / 2; i++) {
-            if (s.charAt(i) != s.charAt(s.length() - i - 1)) return false;
-        }
         return true;
+    }
+
+    public boolean letterCheck(int c) {
+        if ((char)c >= 'a' && (char)c <= 'z') return true;
+        if ((char)c >= 'A' && (char)c <= 'Z') return true;
+        if ((char)c >= '0' && (char)c <= '9') return true;
+        return false;
     }
 }
