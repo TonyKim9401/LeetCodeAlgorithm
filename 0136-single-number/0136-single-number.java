@@ -3,7 +3,6 @@ class Solution {
         if (nums.length == 1) return nums[0];
         Arrays.sort(nums);
 
-        int output = 0;
         for (int i = 0; i < nums.length - 1; i += 2) {
             if (nums[i] != nums[i+1]) {
                 return nums[i];
