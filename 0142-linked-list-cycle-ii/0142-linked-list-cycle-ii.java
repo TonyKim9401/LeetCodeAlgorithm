@@ -12,12 +12,19 @@
 public class Solution {
     public ListNode detectCycle(ListNode head) {
         ListNode slow = head;
-        List<ListNode> list = new ArrayList<>();
+        ListNode fast = head;
 
-        while (slow != null && slow.next != null) {
-            list.add(slow);
+        while (fast != null && fast.next != null) {
             slow = slow.next;
-            if (list.contains(slow)) return slow;
+            fast = fast.next.next;
+            if (slow == fast) {
+                slow = head;
+                while (slow != fast) {
+                    slow = slow.next;
+                    fast = fast.next;
+                }
+                return slow;
+            }
         }
         return null;
     }
