@@ -5,7 +5,6 @@ class Solution {
         int j = s.length() - 1;
 
         while (i <= j) {
-
             int start = s.charAt(i);
             int end = s.charAt(j);
             if (!isLetter(start)) {
@@ -16,8 +15,8 @@ class Solution {
                 j -= 1;
                 continue;
             }
-            
-            start = start >= 'a' ? start - 'a' + 'A' : start;
+
+            start = start >= 'a' ? start - 'a' +'A' : start;
             end = end >= 'a' ? end - 'a' + 'A' : end;
             if (start != end) return false;
             i += 1;
