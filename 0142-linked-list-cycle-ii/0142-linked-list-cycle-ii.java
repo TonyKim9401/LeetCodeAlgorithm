@@ -12,14 +12,12 @@
 public class Solution {
     public ListNode detectCycle(ListNode head) {
         ListNode slow = head;
-        Map<ListNode, ListNode> map = new HashMap<>();
+        List<ListNode> list = new ArrayList<>();
 
         while (slow != null && slow.next != null) {
-            map.put(slow, slow);
+            list.add(slow);
             slow = slow.next;
-            if (map.containsKey(slow)) {
-                return map.get(slow);
-            }
+            if (list.contains(slow)) return slow;
         }
         return null;
     }
