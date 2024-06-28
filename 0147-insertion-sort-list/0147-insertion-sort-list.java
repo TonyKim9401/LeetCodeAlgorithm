@@ -10,20 +10,21 @@
  */
 class Solution {
     public ListNode insertionSortList(ListNode head) {
-        
-        List<Integer> list = new ArrayList<>();
-        while (head != null) {
-            list.add(head.val);
-            head = head.next;
+        ListNode dummy = new ListNode(0);
+        ListNode current = head;
+
+        while (current != null) {
+            ListNode prev = dummy;
+            ListNode nextNode = current.next;
+
+            while (prev.next != null && prev.next.val < current.val) {
+                prev = prev.next;
+            }
+
+            current.next = prev.next;
+            prev.next = current;
+            current = nextNode;
         }
-        
-        Collections.sort(list);
-        ListNode output = new ListNode(list.get(0));
-        ListNode inside = output;
-        for (int i = 1; i < list.size(); i++) {
-            inside.next = new ListNode(list.get(i));
-            inside = inside.next;
-        }
-        return output;
+        return dummy.next;
     }
 }
