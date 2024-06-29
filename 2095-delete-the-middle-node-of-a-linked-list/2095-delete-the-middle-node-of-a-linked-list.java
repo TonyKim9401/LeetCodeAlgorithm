@@ -20,7 +20,7 @@ class Solution {
             slow = slow.next; // 가운데 획득
             fast = fast.next.next;
         }
-        while (node != null) {
+        while (node.next != null) {
             if (node.next == slow) {
                 node.next = node.next.next;
                 break;
