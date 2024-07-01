@@ -18,15 +18,14 @@ class Solution {
         return builder(nums, 0, nums.length - 1);
     }
 
-    public TreeNode builder(int[] nums, int left, int right) {
-        if (left > right) return null;
+    public TreeNode builder(int[] nums, int start, int end) {
+        if (start > end) return null;
 
-        int mid = left + (right - left) / 2;
+        int mid = start + (end - start) / 2;
 
-        TreeNode output = new TreeNode(nums[mid]);
-
-        output.left = builder(nums, left, mid - 1);
-        output.right = builder(nums, mid + 1, right);
-        return output;
+        TreeNode node = new TreeNode(nums[mid]);
+        node.left = builder(nums, start, mid - 1);
+        node.right = builder(nums, mid + 1, end);
+        return node;
     }
 }
