@@ -24,23 +24,24 @@
  * }
  */
 class Solution {
+    private List<Integer> list = new ArrayList<>();
     public TreeNode sortedListToBST(ListNode head) {
-        List<Integer> list = new ArrayList<>();
+        if (head == null) return null;
         while (head != null) {
             list.add(head.val);
             head = head.next;
         }
-
-        return builder(list, 0, list.size() - 1);
+        return builder(list, 0, list.size()-1);
     }
 
-    public TreeNode builder(List<Integer> list, int left, int right) {
-        if (left > right) return null;
+    public TreeNode builder(List<Integer> list, int start, int end) {
+        if (start > end) return null;
 
-        int mid = left + (right - left) / 2;
+        int mid = start + (end - start) / 2;
+
         TreeNode node = new TreeNode(list.get(mid));
-        node.left = builder(list, left, mid - 1);
-        node.right = builder(list, mid + 1, right);
+        node.left = builder(list, start, mid - 1);
+        node.right = builder(list, mid + 1, end);
         return node;
     }
 }
