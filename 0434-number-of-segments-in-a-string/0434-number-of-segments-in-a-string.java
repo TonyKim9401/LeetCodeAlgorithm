@@ -1,15 +1,7 @@
+import java.util.*;
 class Solution {
     public int countSegments(String s) {
-        int output = 0;
-
-        for (int i = 0; i < s.length();i ++) {
-            if (s.charAt(i) != ' ') {
-                output += 1;
-                while (s.charAt(i) != ' ' && i < s.length()-1) {
-                    i += 1;
-                }
-            }
-        }
-        return output;
+        // StringTokenizer st = new StringTokenizer(s);
+        return new StringTokenizer(s).countTokens();
     }
 }
