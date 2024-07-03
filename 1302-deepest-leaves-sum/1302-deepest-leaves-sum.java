@@ -14,26 +14,24 @@
  * }
  */
 class Solution {
-    private int sum = 0;
-    private int currentDepth = 0;
-    private int maxDepth = 0;
+    private int currentDepth, maxDepth, sum;
     public int deepestLeavesSum(TreeNode root) {
-        depthCheck(root);
+        getSum(root);
         return sum;
     }
 
-    public void depthCheck(TreeNode node) {
+    public void getSum(TreeNode node) {
         if (node == null) return;
-        currentDepth += 1;
-        depthCheck(node.left);
 
+        currentDepth += 1;
         if (currentDepth == maxDepth) {
             sum += node.val;
         } else if (currentDepth > maxDepth) {
-            maxDepth = currentDepth;
             sum = node.val;
-        }
-        depthCheck(node.right);
+            maxDepth = currentDepth;
+        };
+        getSum(node.left);
+        getSum(node.right);
         currentDepth -= 1;
     }
 }
