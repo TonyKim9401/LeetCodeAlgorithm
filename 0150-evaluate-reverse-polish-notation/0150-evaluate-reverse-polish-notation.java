@@ -7,10 +7,12 @@ class Solution {
             if ("+-*/".contains(str)) {
                 int b = Integer.valueOf(stack.pop());
                 int a = Integer.valueOf(stack.pop());
-                if (str.equals("+")) output = a + b;
-                else if (str.equals("-")) output = a - b;
-                else if (str.equals("*")) output = a * b;
-                else if (str.equals("/")) output = a / b;
+                switch (str) {
+                    case "+" -> output = a+b;
+                    case "-" -> output = a-b;
+                    case "*" -> output = a*b;
+                    case "/" -> output = a/b;
+                }
                 stack.push(output+"");
             } else {
                 stack.push(str);
