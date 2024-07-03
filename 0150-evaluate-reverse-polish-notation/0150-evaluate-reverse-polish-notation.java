@@ -6,14 +6,12 @@ class Solution {
             if ("+-*/".contains(str)) {
                 int b = stack.pop();
                 int a = stack.pop();
-                int output = 0;
                 switch (str) {
-                    case "+" -> output = a+b;
-                    case "-" -> output = a-b;
-                    case "*" -> output = a*b;
-                    case "/" -> output = a/b;
+                    case "+" -> stack.push(a+b);
+                    case "-" -> stack.push(a-b);
+                    case "*" -> stack.push(a*b);
+                    case "/" -> stack.push(a/b);
                 }
-                stack.push(output);
             } else {
                 stack.push(Integer.valueOf(str));
             }
