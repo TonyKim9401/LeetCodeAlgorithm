@@ -14,13 +14,17 @@ class Solution {
         ListNode current = head;
 
         while (current != null) {
+
+            // initializing
             ListNode prev = dummy;
             ListNode nextNode = current.next;
 
+            // comparing
             while (prev.next != null && prev.next.val < current.val) {
                 prev = prev.next;
             }
 
+            // swap
             current.next = prev.next;
             prev.next = current;
             current = nextNode;
