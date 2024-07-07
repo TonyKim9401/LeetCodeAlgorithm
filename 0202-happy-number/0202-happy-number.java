@@ -2,10 +2,10 @@ class Solution {
     public boolean isHappy(int n) {
 
         int happy = getSquare(n);
-        while (happy != 1 && happy != 4) {
+        while (!alwaysHappy(happy) && !alwaysUnhappy(happy)) {
             happy = getSquare(happy);
         }
-        return happy == 1;
+        return alwaysHappy(happy);
     }
 
     public int getSquare(int n) {
@@ -16,5 +16,12 @@ class Solution {
             n /= 10;
         }
         return result;
+    }
+
+    public boolean alwaysHappy(int n) {
+        return n == 1 || n == 7;
+    }
+    public boolean alwaysUnhappy(int n) {
+        return n == 4;
     }
 }
