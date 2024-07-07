@@ -1,18 +1,20 @@
 class Solution {
     public boolean isHappy(int n) {
-        if (n == 1) return true;
 
-        int happy = n;
-        while (happy > 0) {
-            String num = String.valueOf(happy);
-            happy = 0;
-            for (int i = 0; i < num.length(); i++) {
-                happy += Math.pow(Integer.valueOf(String.valueOf(num.charAt(i))), 2);
-            }
-
-            if (happy == 1) return true;
-            if (happy == 4) return false;
+        int happy = getSquare(n);
+        while (happy != 1 && happy != 4) {
+            happy = getSquare(happy);
         }
-        return false;
+        return happy == 1;
+    }
+
+    public int getSquare(int n) {
+        int result = 0;
+        while (n > 0) {
+            int value = n % 10;
+            result += Math.pow(value,2);
+            n /= 10;
+        }
+        return result;
     }
 }
