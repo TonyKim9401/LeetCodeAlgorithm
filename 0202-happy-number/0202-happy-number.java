@@ -9,8 +9,7 @@ class Solution {
     }
 
     public boolean isHappyCheck(int n) {
-        if (n == 1 || n == 7) return true;
-        return false;
+        return n == 1 || n == 7;
     }
 
     public int getSquare(int n) {
