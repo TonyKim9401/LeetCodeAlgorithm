@@ -10,20 +10,19 @@
  */
 class Solution {
     public ListNode reverseList(ListNode head) {
-    		if (head == null) {
-            return null;
+        List<Integer> list = new ArrayList<>();
+
+        while (head != null) {
+            list.add(head.val);
+            head = head.next;
         }
-        ListNode prevNode = null;
-        ListNode currNode = head;
-        ListNode nextNode = null;
-        
-        while (currNode.next != null) {
-        		nextNode = currNode.next;
-            currNode.next = prevNode;
-            prevNode = currNode;
-            currNode = nextNode;
+        Collections.reverse(list);
+        ListNode output = new ListNode(0);
+        ListNode dummy = output;
+        for (int num : list) {
+            output.next = new ListNode(num);
+            output = output.next;
         }
-        currNode.next = prevNode;
-        return currNode;
-    } 
+        return dummy.next;
+    }
 }
