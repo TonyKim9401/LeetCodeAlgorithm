@@ -11,7 +11,7 @@ class Solution {
             }
 
             if (happy == 1) return true;
-            if (happy < 5) return false;
+            if (happy == 4) return false;
         }
         return false;
     }
