@@ -19,11 +19,10 @@ class Solution {
 
         invertTree(root.left);
         invertTree(root.right);
-
-        TreeNode leftNode = root.left;
-        TreeNode rightNode = root.right;
-        root.left = rightNode;
-        root.right = leftNode;
+        TreeNode left = root.left;
+        TreeNode right = root.right;
+        root.left = right;
+        root.right = left;
 
         return root;
     }
