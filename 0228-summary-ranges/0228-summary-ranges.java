@@ -1,18 +1,16 @@
 class Solution {
     public List<String> summaryRanges(int[] nums) {
-        // start, end
-        // for-loop nums
+        int start = 0;
         List<String> output = new ArrayList<>();
-        int left = 0;
         for (int i = 0; i < nums.length; i++) {
-            int right = i;
-            if (i == nums.length - 1 || nums[i] + 1 != nums[i+1]) {
-                if (left == right) {
-                    output.add(String.valueOf(nums[left]));
+            int end = i;
+            if (i == nums.length - 1 || nums[i] + 1 < nums[i + 1]) {
+                if (start == end) {
+                    output.add(String.valueOf(nums[i]));
                 } else {
-                    output.add(nums[left] + "->" + nums[right]);
+                    output.add(nums[start] + "->" + nums[end]);
                 }
-                left = i + 1;
+                start = i + 1;
             }
         }
         return output;
