@@ -1,9 +1,10 @@
 class Solution {
+    private Map<Character, String> map = new HashMap<>();
+    private List<String> output = new ArrayList<>();
+    private StringBuilder sb = new StringBuilder();
     public List<String> letterCombinations(String digits) {
-        int length = digits.length();
-        if (length == 0) return List.of();
+        if (digits.length() == 0) return List.of();
 
-        Map<Character, String> map = new HashMap<>();
         map.put('2',"abc");
         map.put('3',"def");
         map.put('4',"ghi");
@@ -13,21 +14,20 @@ class Solution {
         map.put('8',"tuv");
         map.put('9',"wxyz");
 
-        List<String> output = new ArrayList<>();
-        backtracking(digits, 0, new StringBuilder(), output, map);
+        backtracking(digits, 0);
         return output;
     }
 
-    public void backtracking(String digits, int idx, StringBuilder sb, List<String> output, Map<Character, String> map) {
+    public void backtracking(String digits, int idx){
         if (digits.length() == idx) {
             output.add(sb.toString());
             return;
         }
-        
-        String dials = map.get(digits.charAt(idx));
-        for(char c : dials.toCharArray()) {
+
+        String dial = map.get(digits.charAt(idx));
+        for (char c : dial.toCharArray()){
             sb.append(c);
-            backtracking(digits, idx+1, sb, output, map);
+            backtracking(digits, idx+1);
             sb.deleteCharAt(sb.length()-1);
         }
     }
