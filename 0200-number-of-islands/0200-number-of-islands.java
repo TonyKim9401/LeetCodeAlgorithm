@@ -23,7 +23,6 @@ class Solution {
 
     public void checkIsland(int v, int h, char[][] grid, boolean[][] path) {
         // out of 2 demension
-        System.out.println(grid.length + " " + grid[0].length);
         if (v < 0 || v > grid.length-1 || h < 0 || h > grid[0].length-1) return;
         // visited
         if (path[v][h]) return;
