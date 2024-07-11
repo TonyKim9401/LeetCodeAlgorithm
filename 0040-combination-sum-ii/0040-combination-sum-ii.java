@@ -15,7 +15,6 @@ class Solution {
 
         for (int i = idx; i < candidates.length; i++) {
             if (i > idx && candidates[i] == candidates[i-1]) continue;
-            if (candidates[i] > target) break;
             inside.add(candidates[i]);
             backtracking(candidates, target-candidates[i], i+1, inside, output);
             inside.remove(inside.size()-1);
