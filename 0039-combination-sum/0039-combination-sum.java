@@ -1,5 +1,6 @@
 class Solution {
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
+        Arrays.sort(candidates);
         List<List<Integer>> output = new ArrayList<>();
         backtracking(candidates, target, 0, 0, new ArrayList<>(), output);
         return output;
@@ -11,7 +12,7 @@ class Solution {
             return;
         }
 
-        if (idx > candidates.length-1 || total > target) return;
+        if (total > target || idx > candidates.length-1) return;
         inside.add(candidates[idx]);
         backtracking(candidates, target, idx, total+candidates[idx], inside, output);
         inside.remove(inside.size()-1);
