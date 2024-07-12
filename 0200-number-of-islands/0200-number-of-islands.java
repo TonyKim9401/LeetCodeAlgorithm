@@ -1,38 +1,27 @@
 class Solution {
     public int numIslands(char[][] grid) {
-        // bfs
-        boolean[][] path = new boolean[grid.length][grid[0].length];
+        boolean[][] check = new boolean[grid.length][grid[0].length];
 
-        int count = 0;
-        for (int v = 0; v < grid.length; v++) {
-            for (int h = 0; h < grid[0].length; h++) {
-                int isIsland = grid[v][h];
-
-                if (isIsland == '0') continue;
-                // path false = not visit
-                // path true = visited
-                if (path[v][h]) continue;
-
-                // visiting land
-                count += 1;
-                checkIsland(v, h, grid, path);
+        int output = 0;
+        for (int i = 0; i < grid.length; i++) {
+            for (int j = 0; j < grid[0].length; j++) {
+                if (grid[i][j] == '0') continue;
+                if (check[i][j]) continue;
+                output += 1;
+                islandCheck(i, j, grid, check);
             }
         }
-        return count;
+        return output;
     }
 
-    public void checkIsland(int v, int h, char[][] grid, boolean[][] path) {
-        // out of 2 demension
-        if (v < 0 || v > grid.length-1 || h < 0 || h > grid[0].length-1) return;
-        // visited
-        if (path[v][h]) return;
-        if (grid[v][h] == '0') return;
-        if (grid[v][h] == '1') path[v][h] = true;
-        // try to visit nsew
-        // System.out.println(v + " " + h);
-        checkIsland(v-1, h ,grid,path);
-        checkIsland(v+1, h ,grid,path);
-        checkIsland(v,   h-1,grid,path);
-        checkIsland(v,   h+1,grid,path);
+    public void islandCheck(int i, int j, char[][] grid, boolean[][] check) {
+        if (i < 0 || i > grid.length-1 || j < 0 || j > grid[0].length-1) return;
+        if (grid[i][j] == '0') return;
+        if (check[i][j]) return;
+        check[i][j] = true;
+        islandCheck(i+1, j, grid, check);
+        islandCheck(i-1, j, grid, check);
+        islandCheck(i, j+1, grid, check);
+        islandCheck(i, j-1, grid, check);
     }
 }
