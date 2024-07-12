@@ -6,7 +6,7 @@ class Solution {
             int end = i;
             if (i == nums.length-1 || nums[i] + 1 < nums[i+1]) {
                 if (start == end) {
-                    output.add(String.valueOf(nums[i]));
+                    output.add(String.valueOf(nums[end]));
                 } else {
                     output.add(nums[start] + "->" + nums[end]);
                 }
