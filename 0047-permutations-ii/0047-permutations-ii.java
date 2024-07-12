@@ -17,9 +17,9 @@ class Solution {
                 inside.add(nums[i]);
                 check.add(i);
                 backtracking(nums, inside, check, output);
-                check.remove(check.size()-1);
                 inside.remove(inside.size()-1);
-                while (i < nums.length -1 && nums[i] == nums[i+1]) i += 1;
+                check.remove(check.size()-1);
+                while (i < nums.length-1 && nums[i] == nums[i+1]) i += 1;
             }
         }
     }
