@@ -6,7 +6,7 @@ class Solution {
     }
 
     public void backtracking(int[] nums, List<Integer> inside, List<List<Integer>> output) {
-        if (inside.size() == nums.length) {
+        if (nums.length == inside.size()) {
             output.add(new ArrayList<>(inside));
             return;
         }
