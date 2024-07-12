@@ -10,8 +10,8 @@ class Solution {
             output.add(new ArrayList<>(inside));
             return;
         }
+
         if (total > target || idx > candidates.length-1) return;
-        
         inside.add(candidates[idx]);
         backtracking(candidates, target, total+candidates[idx], idx, inside, output);
         inside.remove(inside.size()-1);
