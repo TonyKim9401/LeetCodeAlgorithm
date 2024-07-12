@@ -14,17 +14,17 @@
  * }
  */
 class Solution {
-    // count;
-    private int count;
+    private int output = 0;
     public int countNodes(TreeNode root) {
-        countNode(root);
-        return count;
+        count(root);
+        return output;
     }
-    public void countNode(TreeNode node) {
+
+    public void count(TreeNode node) {
         if (node == null) return;
 
-        count += 1;
-        countNode(node.left);
-        countNode(node.right);
+        output+=1;
+        count(node.left);
+        count(node.right);
     }
 }
