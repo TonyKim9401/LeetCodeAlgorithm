@@ -24,8 +24,8 @@ class Solution {
     public void pathCheck(TreeNode node, List<Integer> inside, int targetSum) {
         if (node == null) return;
 
-        inside.add(node.val);
         targetSum -= node.val;
+        inside.add(node.val);
 
         if (targetSum == 0 && node.left == null && node.right == null) {
             output.add(new ArrayList<>(inside));
