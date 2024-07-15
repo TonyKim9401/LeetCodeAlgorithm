@@ -4,8 +4,9 @@ class Solution {
         backtracking(n, k, 1, new ArrayList<>(), output);
         return output;
     }
+
     public void backtracking(int n, int k, int idx, List<Integer> inside, List<List<Integer>> output) {
-        if (k == inside.size()) {
+        if (inside.size() == k) {
             output.add(new ArrayList<>(inside));
             return;
         }
