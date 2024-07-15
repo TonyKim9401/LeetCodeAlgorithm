@@ -5,8 +5,8 @@ class Solution {
         int output = 0;
         while (number.length() != 1) {
             output = 0;
-            for (int i = 0; i < number.length(); i++) {
-                output += Integer.valueOf(number.charAt(i) - '0');
+            for (char c : number.toCharArray()) {
+                output += Integer.valueOf(c - '0');
             }
             number = String.valueOf(output);
         }
