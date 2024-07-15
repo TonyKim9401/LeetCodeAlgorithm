@@ -7,11 +7,13 @@ class Solution {
     }
 
     public void backtracking(int[] candidates, int target, int idx, List<Integer> inside, List<List<Integer>> output) {
-        if (target < 0) return;
+
         if (target == 0) {
             output.add(new ArrayList<>(inside));
             return;
         }
+
+        if (target < 0 || idx > candidates.length-1) return;
 
         for (int i = idx; i < candidates.length; i++) {
             if (i > idx && candidates[i] == candidates[i-1]) continue;
