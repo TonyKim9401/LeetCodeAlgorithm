@@ -1,15 +1,16 @@
 class Solution {
     public int addDigits(int num) {
-        if (num < 10) return num;
-        String number = String.valueOf(num);
-        int output = 0;
-        while (number.length() != 1) {
-            output = 0;
-            for (char c : number.toCharArray()) {
-                output += Integer.valueOf(c - '0');
+        while (num / 10 != 0) {
+            int sum = 0;
+            while (num > 0) {
+                int rem = num % 10;
+                sum += rem;
+                num /= 10;
             }
-            number = String.valueOf(output);
+
+            if (sum/10 == 0) return sum;
+            else num = sum;
         }
-        return output;
+        return num;
     }
 }
