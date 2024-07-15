@@ -3,7 +3,7 @@ class Solution {
         if (n < 1) return false;
         int[] factors = {2,3,5};
         for (int factor : factors) {
-            while (n%factor == 0) n /= factor;
+            while (n % factor == 0) n /= factor;
         }
         return n == 1;
     }
