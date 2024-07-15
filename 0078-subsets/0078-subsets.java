@@ -8,8 +8,6 @@ class Solution {
     public void backtracking(int[] nums, int idx, List<Integer> inside, List<List<Integer>> output) {
         output.add(new ArrayList<>(inside));
 
-        if (idx > nums.length-1) return;
-
         for (int i = idx; i < nums.length; i++) {
             inside.add(nums[i]);
             backtracking(nums, i+1, inside, output);
