@@ -12,7 +12,6 @@ class Solution {
                 break;
             }
         }
-        if (!check) output = n;
-        return output;
+        return check ? output : n;
     }
 }
