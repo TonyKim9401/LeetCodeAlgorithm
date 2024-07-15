@@ -16,7 +16,6 @@ class Solution {
         for (int i = idx; i <= 9; i++) {
             sum += i;
             inside.add(i);
-            System.out.println(sum + " " + i + " " + inside.size());
             backtracking(k, n, i+1, sum, inside, output);
             sum -= i;
             inside.remove(inside.size()-1);
