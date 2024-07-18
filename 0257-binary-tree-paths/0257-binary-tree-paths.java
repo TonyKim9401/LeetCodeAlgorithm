@@ -15,23 +15,22 @@
  */
 class Solution {
     public List<String> binaryTreePaths(TreeNode root) {
-        if (root == null) return List.of();
         List<String> output = new ArrayList<>();
-        backtracking(root, "", output);
+        pathCheck(root, "", output);
         return output;
     }
 
-    public void backtracking(TreeNode node, String str, List<String> output) {
+    public void pathCheck(TreeNode node, String str, List<String> output) {
         str += node.val;
         if (node.left == null && node.right == null) {
             output.add(str);
             return;
         }
         if (node.left != null) {
-            backtracking(node.left, str+"->", output);
+            pathCheck(node.left, str+"->", output);
         }
         if (node.right != null) {
-            backtracking(node.right, str+"->", output);
+            pathCheck(node.right, str+"->", output);
         }
     }
 }
