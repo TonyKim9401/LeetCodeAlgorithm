@@ -1,5 +1,12 @@
 class Solution {
     public int addDigits(int num) {
-        return (num-1)%9+1;
+        while (num > 9) {
+            String str = String.valueOf(num);
+            num = 0;
+            for (char c : str.toCharArray()) {
+                num += c - '0';
+            }
+        }
+        return num;
     }
 }
