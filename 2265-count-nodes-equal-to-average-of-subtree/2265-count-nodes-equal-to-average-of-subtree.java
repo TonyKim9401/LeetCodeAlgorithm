@@ -14,13 +14,12 @@
  * }
  */
 class Solution {
-    private int result = 0;
+    private int output = 0;
     public int averageOfSubtree(TreeNode root) {
         averageCheck(root);
-        return result;
+        return output;
     }
-
-    public int[] averageCheck(TreeNode node) {
+    private int[] averageCheck(TreeNode node) {
         if (node == null) return new int[]{0, 0};
 
         int[] left = averageCheck(node.left);
@@ -28,9 +27,9 @@ class Solution {
 
         int sum = left[0] + right[0] + node.val;
         int count = left[1] + right[1] + 1;
-        
-        if (node.val == sum/count) {
-            result += 1;
+
+        if (node.val == sum / count) {
+            output += 1;
         }
         return new int[]{sum, count};
     }
