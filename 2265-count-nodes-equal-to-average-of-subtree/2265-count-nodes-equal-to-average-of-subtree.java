@@ -19,7 +19,8 @@ class Solution {
         averageCheck(root);
         return output;
     }
-    private int[] averageCheck(TreeNode node) {
+
+    public int[] averageCheck(TreeNode node) {
         if (node == null) return new int[]{0, 0};
 
         int[] left = averageCheck(node.left);
@@ -28,9 +29,7 @@ class Solution {
         int sum = left[0] + right[0] + node.val;
         int count = left[1] + right[1] + 1;
 
-        if (node.val == sum / count) {
-            output += 1;
-        }
+        if (sum / count == node.val) output += 1;
         return new int[]{sum, count};
     }
 }
