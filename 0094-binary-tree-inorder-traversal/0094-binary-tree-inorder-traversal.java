@@ -19,6 +19,7 @@ class Solution {
         inorderCheck(root);
         return output;
     }
+
     public void inorderCheck(TreeNode node) {
         if (node == null) return;
 
