@@ -14,12 +14,10 @@
  * }
  */
 class Solution {
-    private int currentValue = 0;
-    private int currentCount = 0;
-    private int maxCount = 0;
+    private int currCount, maxCount, currValue;
     private List<Integer> maxList = new ArrayList<>();
     public int[] findMode(TreeNode root) {
-        check(root);
+        find(root);
         int[] output = new int[maxList.size()];
         for (int i = 0; i < maxList.size(); i++) {
             output[i] = maxList.get(i);
@@ -27,20 +25,21 @@ class Solution {
         return output;
     }
 
-    public void check(TreeNode node) {
+    public void find(TreeNode node) {
         if (node == null) return;
 
-        check(node.left);
+        find(node.left);
 
-        currentCount = currentValue == node.val ? currentCount + 1 : 1;
-        if (currentCount == maxCount) {
+        currCount = currValue == node.val ? currCount + 1 : 1;
+        if (currCount == maxCount) {
             maxList.add(node.val);
-        } else if (currentCount > maxCount) {
-            maxCount = currentCount;
+        } else if (currCount > maxCount) {
+            maxCount = currCount;
             maxList.clear();
             maxList.add(node.val);
         }
-        currentValue = node.val;
-        check(node.right);
+        currValue = node.val;
+
+        find(node.right);
     }
 }
