@@ -14,33 +14,35 @@
  * }
  */
 class Solution {
-    private Map<Integer, Integer> map = new HashMap<>();
+    private int currentVal = 0;
+    private int currentCount = 0;
+    private int maxCount = 0;
+    private List<Integer> list = new ArrayList<>();
     public int[] findMode(TreeNode root) {
-        check(root);
-        List<Integer> keySet = new ArrayList<>(map.keySet());
-        keySet.sort((o1, o2) -> map.get(o2).compareTo(map.get(o1)));
-        int max = map.get(keySet.get(0));
-        List<Integer> maxList = new ArrayList<>();
-        for (int key : keySet) {
-            if (max == map.get(key)) maxList.add(key);
-            else break;
-        }
-        int[] output = new int[maxList.size()];
-        for (int i = 0; i < maxList.size(); i++) {
-            output[i] = maxList.get(i);
+        checkMode(root);
+        int size = list.size();
+        int[] output = new int[size];
+        for (int i = 0; i < size; i++) {
+            output[i] = list.get(i);
         }
         return output;
     }
 
-    public void check(TreeNode node) {
+    public void checkMode(TreeNode node) {
         if (node == null) return;
 
-        if (map.containsKey(node.val)) {
-            map.put(node.val, map.get(node.val) + 1);
-        } else {
-            map.put(node.val, 1);
+        checkMode(node.left);
+
+        currentCount = (node.val == currentVal) ? currentCount + 1 : 1;
+        if (currentCount == maxCount) {
+            list.add(node.val);
+        } else if (currentCount > maxCount) {
+            maxCount = currentCount;
+            list.clear();
+            list.add(node.val);
         }
-        check(node.left);
-        check(node.right);
+        currentVal = node.val;
+
+        checkMode(node.right);
     }
 }
