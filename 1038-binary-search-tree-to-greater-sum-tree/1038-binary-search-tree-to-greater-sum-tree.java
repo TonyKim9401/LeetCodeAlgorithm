@@ -16,15 +16,16 @@
 class Solution {
     private int sum = 0;
     public TreeNode bstToGst(TreeNode root) {
-        sumNode(root);
+        toGst(root);
         return root;
     }
 
-    public void sumNode(TreeNode node) {
+    public void toGst(TreeNode node) {
         if (node == null) return;
-        sumNode(node.right);
+
+        toGst(node.right);
         sum += node.val;
-        node.val = suml;
-        sumNode(node.left);
+        node.val = sum;
+        toGst(node.left);
     }
 }
