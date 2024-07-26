@@ -23,11 +23,6 @@ class Solution {
             int count = map.get(c);
             map.put(c, count+1);
         }
-        for (char c : map.keySet()) {
-            if (map.get(c) > 0) {
-                System.out.println(c + " " + map.get(c));
-            }
-        }
         // -> sort value descending
         // e 2
         // t 1
