@@ -14,35 +14,33 @@
  * }
  */
 class Solution {
-    private int currentVal = 0;
+    private int currentValue = 0;
     private int currentCount = 0;
     private int maxCount = 0;
-    private List<Integer> list = new ArrayList<>();
+    private List<Integer> maxList = new ArrayList<>();
     public int[] findMode(TreeNode root) {
-        checkMode(root);
-        int size = list.size();
-        int[] output = new int[size];
-        for (int i = 0; i < size; i++) {
-            output[i] = list.get(i);
+        check(root);
+        int[] output = new int[maxList.size()];
+        for (int i = 0; i < maxList.size(); i++) {
+            output[i] = maxList.get(i);
         }
         return output;
     }
 
-    public void checkMode(TreeNode node) {
+    public void check(TreeNode node) {
         if (node == null) return;
 
-        checkMode(node.left);
+        check(node.left);
 
-        currentCount = (node.val == currentVal) ? currentCount + 1 : 1;
+        currentCount = currentValue == node.val ? currentCount + 1 : 1;
         if (currentCount == maxCount) {
-            list.add(node.val);
+            maxList.add(node.val);
         } else if (currentCount > maxCount) {
             maxCount = currentCount;
-            list.clear();
-            list.add(node.val);
+            maxList.clear();
+            maxList.add(node.val);
         }
-        currentVal = node.val;
-
-        checkMode(node.right);
+        currentValue = node.val;
+        check(node.right);
     }
 }
