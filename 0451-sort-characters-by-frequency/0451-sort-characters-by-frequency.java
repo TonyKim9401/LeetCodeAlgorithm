@@ -3,12 +3,12 @@ class Solution {
         Map<Character, Integer> map = new HashMap<>();
         // map has 52 keys
         for (int i = 1; i <= 26; i++) {
-        		char smallValue = (char)('a' + i - 1);
-        		map.put(smallValue, 0);
+            char smallValue = (char)('a' + i - 1);
+            map.put(smallValue, 0);
         }
         for (int i = 1; i <= 26; i++) {
-        		char capitalValue = (char)('A' + i - 1);
-        		map.put(capitalValue, 0);
+            char capitalValue = (char)('A' + i - 1);
+            map.put(capitalValue, 0);
         }
         for (int i = 0; i < 10; i++) {
             char intValue = (char)('1' + i - 1);
