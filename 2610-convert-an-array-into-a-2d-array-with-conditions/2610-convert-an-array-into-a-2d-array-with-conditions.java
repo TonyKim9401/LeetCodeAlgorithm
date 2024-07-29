@@ -19,7 +19,7 @@ class Solution {
         // 3 : 2
         // 4 : 1
         // 2 : 1
-        for (int num : nums) {
+        for (int num : map.keySet()) {
             int value = map.get(num);
             for (int i = 0; i < value; i++) {
                 try {
