@@ -16,15 +16,15 @@
 class Solution {
     private int output = 0;
     public int averageOfSubtree(TreeNode root) {
-        averageCheck(root);
+        dfs(root);
         return output;
     }
 
-    public int[] averageCheck(TreeNode node) {
+    public int[] dfs(TreeNode node) {
         if (node == null) return new int[]{0, 0};
 
-        int[] left = averageCheck(node.left);
-        int[] right = averageCheck(node.right);
+        int[] left = dfs(node.left);
+        int[] right = dfs(node.right);
 
         int sum = left[0] + right[0] + node.val;
         int count = left[1] + right[1] + 1;
