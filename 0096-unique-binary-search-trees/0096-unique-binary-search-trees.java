@@ -7,13 +7,13 @@ class Solution {
 
         for (int i = 4; i <= n; i++) {
             int sum = 0;
-            int right = 1;
             int left = i - 2;
+            int right = 1;
             dp[i] = dp[i-1]*2;
             while (left >= 1) {
-                sum += dp[right] * dp[left];
-                right += 1;
+                sum += dp[left] * dp[right];
                 left -= 1;
+                right += 1;
             }
             dp[i] += sum;
         }
