@@ -1,11 +1,48 @@
 class Solution {
     public List<List<String>> groupAnagrams(String[] strs) {
         List<List<String>> output = new ArrayList<>();
-
+        
         // O(N^3)
-        // standatd = "eat" [for]
+        // standard = "eat" [for]
         // target = "teae".contains('e') [for]
         // "ta".replaceFirst("e", "") [for]
+        /* does not work
+        List<Integer> visit = new ArrayList<>();
+        Arrays.sort(strs);
+        for (int i = 0; i < strs.length; i++) {
+            String str = strs[i];
+
+            if (visit.contains(i)) continue;
+            List<String> inside = new ArrayList<>();
+            inside.add(str);
+            visit.add(i);
+
+            if (!str.equals("")) {
+                for (int k = i+1; k < strs.length; k++) {
+                    String nextStr = strs[k];
+                    String candidate = strs[k];
+                    if (candidate.equals("")) continue;
+            
+                    for (char c : str.toCharArray()) {
+                        if (!nextStr.contains(String.valueOf(c))) break;
+                        nextStr = nextStr.replaceFirst(String.valueOf(c), "");
+                    }
+                    if (nextStr.equals("") && !visit.contains(k)) {
+                        inside.add(candidate);
+                        visit.add(k);
+                    }
+                }
+            } else {
+                for (int k = i+1; k < strs.length; k++) {
+                    if (strs[k].equals("")) {
+                        inside.add(strs[k]);
+                        visit.add(k);
+                    }
+                }
+            }
+            output.add(inside);
+        }
+        */
         
         // map
         // map.put(2, "tan"); [for]
@@ -15,7 +52,28 @@ class Solution {
         // iterating the other sorted element from the other element
         // "ant".equals("ant")
         // "nat" = map.get(4)
-        // O(n^2)
+        // O(n^2) does not work
+        /*
+        Map<Integer, String> map = new HashMap<>();
+        String[] sortedStrs = new String[strs.length];
+
+        int idx = 0;
+        for (String str : strs) {
+            char[] cArray = str.toCharArray();
+            Arrays.sort(cArray);
+            sortedStrs[idx] = new String(cArray);
+            idx += 1;
+        }
+
+        Set<String> visit = new HashSet<>();
+        for (int i = 0; i < sortedStrs.length; i++) {
+            map.put(i, sortedStrs[i]);
+        }
+
+        for (int i = 0; i < sortedStrs.length; i++) {
+            String str = sortedStrs[i];
+        }*/
+        
 
         // sorted string key from the hashmap
         // ["eat","tea","tan","ate","nat","bat"]
@@ -27,6 +85,7 @@ class Solution {
         //    map.put("ant", new ArrayList<>("tan"));
         // }
 
+        
         Map<String, List<String>> map = new HashMap<>();
 
         String[] sortStrs = new String[strs.length];
@@ -46,6 +105,7 @@ class Solution {
         for (String key : map.keySet()) {
             output.add(map.get(key));
         }
+        
 
         //
         // O(NxM)
