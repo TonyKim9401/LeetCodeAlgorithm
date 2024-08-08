@@ -38,6 +38,7 @@ class Solution {
         TreeNode node = new TreeNode(slow.next.val);
         ListNode rightSide = slow.next.next;
         slow.next = null;
+
         node.left = sortedListToBST(head);
         node.right = sortedListToBST(rightSide);
         return node;
