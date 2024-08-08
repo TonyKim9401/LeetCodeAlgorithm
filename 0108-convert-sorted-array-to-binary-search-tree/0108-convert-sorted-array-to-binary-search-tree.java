@@ -22,10 +22,9 @@ class Solution {
         if (start > end) return null;
 
         int mid = start + (end - start) / 2;
-
         TreeNode node = new TreeNode(nums[mid]);
-        node.left = builder(nums, start, mid - 1);
-        node.right = builder(nums, mid + 1, end);
+        node.left = builder(nums, start, mid-1);
+        node.right = builder(nums, mid+1, end);
         return node;
     }
 }
