@@ -16,21 +16,21 @@
 class Solution {
     private int i, p;
     public TreeNode buildTree(int[] inorder, int[] postorder) {
-        i = inorder.length - 1;
         p = postorder.length - 1;
+        i = inorder.length - 1;
         return builder(inorder, postorder, Integer.MIN_VALUE);
     }
-    
+
     public TreeNode builder(int[] inorder, int[] postorder, int stop) {
         if (p < 0) return null;
-        if (inorder[i] == stop) {
+        if (i >= 0 && inorder[i] == stop){
             i -= 1;
             return null;
         }
 
         TreeNode node = new TreeNode(postorder[p]);
         p -= 1;
-        node.right = builder(inorder, postorder, node.val); 
+        node.right = builder(inorder, postorder, node.val);
         node.left = builder(inorder, postorder, stop);
         return node;
     }
