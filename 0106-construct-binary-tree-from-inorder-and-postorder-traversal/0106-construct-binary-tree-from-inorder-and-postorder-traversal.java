@@ -16,14 +16,14 @@
 class Solution {
     private int i, p;
     public TreeNode buildTree(int[] inorder, int[] postorder) {
-        p = postorder.length - 1;
         i = inorder.length - 1;
+        p = postorder.length - 1;
         return builder(inorder, postorder, Integer.MIN_VALUE);
     }
 
     public TreeNode builder(int[] inorder, int[] postorder, int stop) {
         if (p < 0) return null;
-        if (i >= 0 && inorder[i] == stop){
+        if (i >= 0 && inorder[i] == stop) {
             i -= 1;
             return null;
         }
