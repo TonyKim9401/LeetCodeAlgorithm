@@ -19,8 +19,8 @@ class Solution {
         return builder(preorder, inorder, Integer.MIN_VALUE);
     }
 
-    public TreeNode builder(int[] preorder, int[] inorder, int stop) {
-        if (p >= preorder.length) return null;
+    public TreeNode builder(int[] preorder, int[] inorder, int stop){
+        if (p == preorder.length) return null;
         if (inorder[i] == stop) {
             i += 1;
             return null;
@@ -30,7 +30,7 @@ class Solution {
         p += 1;
 
         node.left = builder(preorder, inorder, node.val);
-        node.right = builder(preorder, inorder ,stop);
+        node.right = builder(preorder, inorder, stop);
         return node;
     }
 }
