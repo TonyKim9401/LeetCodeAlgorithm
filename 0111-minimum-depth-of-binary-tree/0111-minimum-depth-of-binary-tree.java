@@ -27,7 +27,7 @@ class Solution {
         if (node.left == null && node.right == null) return 1;
         if (node.left == null) return right + 1;
         if (node.right == null) return left + 1;
-        return Math.min(left, right) + 1;
 
+        return Math.min(left, right) + 1;
     }
 }
