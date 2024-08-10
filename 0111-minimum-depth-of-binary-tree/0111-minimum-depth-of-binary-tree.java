@@ -15,14 +15,19 @@
  */
 class Solution {
     public int minDepth(TreeNode root) {
-        if (root == null) return 0;
+        return dfs(root, 0);
+    }
 
-        int left = minDepth(root.left);
-        int right = minDepth(root.right);
+    public int dfs(TreeNode node, int depth) {
+        if (node == null) return depth;
 
-        if (root.left == null && root.right == null) return 1;
-        if (root.left == null) return right + 1;
-        if (root.right == null) return left + 1;
+        depth += 1;
+        int left = dfs(node.left, depth);
+        int right = dfs(node.right, depth);
+
+        if (node.left == null && node.right == null) return 1;
+        if (node.left == null) return right + 1;
+        if (node.right == null) return left + 1;
 
         return Math.min(left, right) + 1;
     }
