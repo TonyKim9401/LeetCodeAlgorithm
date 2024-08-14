@@ -17,15 +17,14 @@ class Solution {
     private List<Integer> nums = new ArrayList<>();
     public int kthSmallest(TreeNode root, int k) {
         visitTreeNode(root);
-        Collections.sort(nums);
         return nums.get(k-1);
     }
 
     public void visitTreeNode(TreeNode node) {
         if (node == null) return;
 
-        nums.add(node.val);
         visitTreeNode(node.left);
+        nums.add(node.val);
         visitTreeNode(node.right);
     }
 }
