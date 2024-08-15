@@ -14,18 +14,18 @@
  * }
  */
 class Solution {
+    private boolean output = false;
     public boolean hasPathSum(TreeNode root, int targetSum) {
-        return pathCheck(root, 0, targetSum);
+        dfs(root, targetSum);
+        return output;
     }
 
-    public boolean pathCheck(TreeNode node, int currentSum, int targetSum) {
-        if (node == null) return false;
+    public void dfs(TreeNode node, int targetSum) {
+        if (node == null) return;
 
-        currentSum += node.val;
-        System.out.println(currentSum);
-
-        if (currentSum == targetSum && node.left == null && node.right == null) return true;
-        return pathCheck(node.left, currentSum, targetSum) ||
-                pathCheck(node.right, currentSum, targetSum);
+        targetSum -= node.val;
+        dfs(node.left, targetSum);
+        dfs(node.right, targetSum);
+        if (node.left == null && node.right == null && targetSum == 0) output = true;
     }
 }
