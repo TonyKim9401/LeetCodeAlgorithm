@@ -1,24 +1,21 @@
 public class Codec {
 
-    private String nextKey = "tinyUrl.com";
-    private String prevKey = "http";
-
-    private Map<String, String> map = new HashMap<>();
+    private Map<Integer, String> map = new HashMap<>();
 
     // Encodes a URL to a shortened URL.
     public String encode(String longUrl) {
         // tony -> encoded -> encod(tony)
-        // https://
+        // https:   //   sample.com
         String[] value = longUrl.split("//");
-        map.put(prevKey, value[0]);
-        map.put(nextKey, value[1]);
-        return "https://tinyUrl.com";
+        map.put(1, value[0]);
+        map.put(2, value[1]);
+        return "";
     }
 
     // Decodes a shortened URL to its original URL.
     public String decode(String shortUrl) {
         // encod(tony) -> decode -> tony
-        return map.get(prevKey) + "//" + map.get(nextKey);
+        return map.get(1) + "//" + map.get(2);
     }
 }
 
