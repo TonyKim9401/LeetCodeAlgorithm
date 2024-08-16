@@ -1,10 +1,8 @@
 class Solution {
     public int[] countBits(int n) {
         int[] output = new int[n+1];
-
-        for (int i = 0; i <= n; i++) {
-            output[i] = Integer.bitCount(i);
-        }
+        int num = 0;
+        while (num <= n) output[num] = Integer.bitCount(num++);
         return output;
     }
 }
