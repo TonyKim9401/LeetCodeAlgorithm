@@ -18,7 +18,6 @@ class Solution {
         for (int i = 1; i < nums.length; i++) {
             pSum[i] = left * nums[i-1];
             left = pSum[i];
-            System.out.print(left + " ");
         }
 
         int right = 1;
