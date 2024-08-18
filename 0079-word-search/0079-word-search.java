@@ -1,30 +1,33 @@
 class Solution {
     public boolean exist(char[][] board, String word) {
-        boolean[][] check = new boolean[board.length][board[0].length];
+        boolean[][] visit;
 
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board[0].length; j++) {
-                if (boardCheck(i, j, 0, board, word, check)) return true;
+                visit = new boolean[board.length][board[0].length];
+                if (wordSearch(i, j, 0, word, board, visit)) return true;
             }
         }
         return false;
     }
 
-    public boolean boardCheck(int i, int j, int idx, char[][] board, String word, boolean[][] check) {
+    private boolean wordSearch(int i, int j, int idx, String word, char[][] board, boolean[][] visit) {
         if (idx == word.length()) return true;
-        if (
-            i < 0 || i > board.length-1 || j < 0 || j > board[0].length-1 ||
-            check[i][j] || board[i][j] != word.charAt(idx)
-        ) return false;
+        if (i < 0 || i >= board.length || j < 0 || j >= board[0].length) return false;
+        if (board[i][j] != word.charAt(idx)) return false;
+        if (visit[i][j]) return false;
+
+        visit[i][j] = true;
         idx += 1;
-        check[i][j] = true;
         if (
-            boardCheck(i+1, j, idx, board, word, check) ||
-            boardCheck(i-1, j, idx, board, word, check) ||
-            boardCheck(i, j+1, idx, board, word, check) ||
-            boardCheck(i, j-1, idx, board, word, check)
+            wordSearch(i+1, j, idx, word, board, visit) ||
+            wordSearch(i-1, j, idx, word, board, visit) ||
+            wordSearch(i, j+1, idx, word, board, visit) ||
+            wordSearch(i, j-1, idx, word, board, visit)
         ) return true;
-        check[i][j] = false;
+        visit[i][j] = false;
+
         return false;
+
     }
 }
