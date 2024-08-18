@@ -25,7 +25,7 @@ class Solution {
         int start = 0;
         int end = target.length() - 1;
 
-        while (start <= end) {
+        while (start < end) {
             if (target.charAt(start) != target.charAt(end)) return false;
             start += 1;
             end -= 1;
