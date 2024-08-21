@@ -5,7 +5,7 @@ class Solution {
         
         int output = 0;
 
-        Set<Integer> set = HashSet<>();
+        Set<Integer> set = new HashSet<>();
 
         for (int num : nums) {
             set.add(num);
