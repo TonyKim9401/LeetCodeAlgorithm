@@ -1,26 +1,32 @@
+import java.util.HashMap;
+import java.util.Map;
+
 class Solution {
     public int longestConsecutive(int[] nums) {
-        // Time complexity = O(n)
-        // Space complexity = O(n)
-        
-        int output = 0;
+        if (nums == null || nums.length == 0) return 0;
 
-        Set<Integer> set = new HashSet<>();
+        Map<Integer, Integer> map = new HashMap<>();
+        int maxLength = 0;
 
         for (int num : nums) {
-            set.add(num);
+            // 이미 처리된 숫자는 무시
+            if (map.containsKey(num)) continue;
+
+            int left = map.getOrDefault(num - 1, 0);
+            int right = map.getOrDefault(num + 1, 0);
+            int currentLength = left + 1 + right;
+
+            // 현재 수열의 길이 갱신
+            map.put(num, currentLength);
+
+            // 양 끝 수열도 갱신
+            map.put(num - left, currentLength);
+            map.put(num + right, currentLength);
+
+            // 최대 수열 길이 갱신
+            maxLength = Math.max(maxLength, currentLength);
         }
 
-        for (int num : nums) {
-            int count = 1;
-            if (!set.contains(num - count)) {
-                while (set.contains(num + count)) {
-                    count += 1;
-                }
-            }
-            output = Math.max(output, count);
-        }
-
-        return output;
+        return maxLength;
     }
 }
