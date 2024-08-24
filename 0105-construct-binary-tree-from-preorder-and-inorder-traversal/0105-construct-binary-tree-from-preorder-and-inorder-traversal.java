@@ -14,12 +14,16 @@
  * }
  */
 class Solution {
-    private int i, p;
+    private int i;
+    private int p;
+    
     public TreeNode buildTree(int[] preorder, int[] inorder) {
         return builder(preorder, inorder, Integer.MIN_VALUE);
     }
 
     private TreeNode builder(int[] preorder, int[] inorder, int stop) {
+        // preorder 유효성 체크 메소드
+        // inorder 유효성 체크 메소드
         if (p >= preorder.length) return null;
         if (inorder[i] == stop) {
             i += 1;
