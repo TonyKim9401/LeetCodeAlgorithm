@@ -11,7 +11,7 @@ class Solution {
         int max = 0;
 
         int start = 0;
-        int end = height.length - 1;
+        int end = height.length-1;
 
         while (start <= end) {
             int heightLeft = height[start];
@@ -20,12 +20,10 @@ class Solution {
             int hei = Math.min(heightLeft, heightRight);
             int wid = end - start;
 
-            if (hei*wid > max) {
-                max = Math.max(max, hei*wid);
-                start += 1;
-            } else {
-                end -= 1;
-            }
+            max = Math.max(max, hei*wid);
+
+            if (heightRight > heightLeft) start += 1;
+            else end -= 1;
         }
         return max;
     }
