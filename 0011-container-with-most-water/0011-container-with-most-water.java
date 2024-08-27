@@ -1,13 +1,5 @@
 class Solution {
     public int maxArea(int[] height) {
-        // [1, 1]
-        // [2, 8]
-        // 1 by 1 = 1
-        
-        // [2, 8]
-        // [9, 7]
-        // 7, 7 => 49
-        
         int max = 0;
 
         int start = 0;
