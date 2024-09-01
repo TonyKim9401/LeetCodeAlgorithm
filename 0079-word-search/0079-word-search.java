@@ -8,11 +8,10 @@ class Solution {
         // -> recursive max k spaces
 
         // Mark visited path to do not go back.
-        boolean[][] visit;
 
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board[0].length; j++) {
-                visit = new boolean[board.length][board[0].length];
+                boolean[][] visit = new boolean[board.length][board[0].length];
                 if (wordSearch(i, j, 0, word, board, visit)) return true;
             }
         }
@@ -37,7 +36,7 @@ class Solution {
         // If visited, the target is gonna be the next charactor
         idx += 1;
 
-        // if any direction returns true then it is true
+        // If any direction returns true then it is true
         if (
             wordSearch(i+1, j, idx, word, board, visit) ||
             wordSearch(i-1, j, idx, word, board, visit) ||
@@ -45,7 +44,7 @@ class Solution {
             wordSearch(i, j-1, idx, word, board, visit)
         ) return true;
 
-        // if 
+        // If visited wrong direction, turns it as false 
         visit[i][j] = false;
 
         return false;
