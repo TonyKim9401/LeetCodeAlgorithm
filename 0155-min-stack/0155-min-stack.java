@@ -1,48 +1,30 @@
 class MinStack {
 
-    // first 2 arrays
-    // first for using as a stack
-    // second for checkig its min value
-    
-    List<Integer> nums;
-    List<Integer> minNums;
+    private List<Integer> stack;
+    private List<Integer> sortedStack;
+
     public MinStack() {
-        nums = new ArrayList<>();
-        minNums = new ArrayList<>();
+        stack = new ArrayList<>();
+        sortedStack = new ArrayList<>();
     }
     
     public void push(int val) {
-        nums.add(val);
-        if (minNums.size() != 0) {
-            int minNumber = minNums.get(minNums.size()-1);
-            minNumber = Math.min(minNumber, val);
-            minNums.add(minNumber);
-        } else {
-            minNums.add(val);
-        }
+        stack.add(val);
+        if (sortedStack.isEmpty() || val <= sortedStack.get(sortedStack.size()-1)) 
+            sortedStack.add(val);
     }
     
     public void pop() {
-        if (nums.size() != 0) {
-            nums.remove(nums.size()-1);
-            minNums.remove(minNums.size()-1);
-        }
+        int popValue = stack.remove(stack.size()-1);
+        if (popValue == sortedStack.get(sortedStack.size()-1)) sortedStack.remove(sortedStack.size()-1);
     }
     
     public int top() {
-        int output = -1;
-        if (nums.size() != 0) {
-            output = nums.get(nums.size()-1);
-        }
-        return output;
+        return stack.get(stack.size()-1);
     }
     
     public int getMin() {
-        int output = -1;
-        if (minNums.size() != 0) {
-            output = minNums.get(minNums.size()-1);
-        }
-        return output;
+        return sortedStack.get(sortedStack.size()-1);
     }
 }
 
