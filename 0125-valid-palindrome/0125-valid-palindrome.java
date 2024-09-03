@@ -9,14 +9,11 @@ class Solution {
             while (!Character.isLetterOrDigit(s.charAt(start)) && start < end) {
                 start += 1;
             }
-            while (!Character.isLetterOrDigit(s.charAt(end)) && end > 0) {
+            while (!Character.isLetterOrDigit(s.charAt(end)) && start < end) {
                 end -= 1;
             }
 
-            if (s.charAt(start) != s.charAt(end) &&
-                Character.isLetterOrDigit(s.charAt(start))&&
-                Character.isLetterOrDigit(s.charAt(end))
-            ) return false;
+            if (s.charAt(start) != s.charAt(end)) return false;
 
             start += 1;
             end -= 1;
