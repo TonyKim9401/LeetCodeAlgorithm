@@ -1,3 +1,7 @@
+// TC: O(n^2)
+// -> use 2 for-loops to search
+// SC: O(n)
+// -> boolean array's size
 class Solution {
     public boolean wordBreak(String s, List<String> wordDict) {
         Set<String> set = new HashSet(wordDict);
