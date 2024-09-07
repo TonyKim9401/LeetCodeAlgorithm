@@ -8,10 +8,10 @@ class Solution {
         // -> recursive max k spaces
 
         // Mark visited path to do not go back.
-
+        boolean[][] visit = new boolean[board.length][board[0].length];
+        
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board[0].length; j++) {
-                boolean[][] visit = new boolean[board.length][board[0].length];
                 if (wordSearch(i, j, 0, word, board, visit)) return true;
             }
         }
