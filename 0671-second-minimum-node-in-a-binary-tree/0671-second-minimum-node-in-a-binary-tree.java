@@ -23,7 +23,7 @@ class Solution {
          return -1;
     }
 
-    public void solve(TreeNode node, Set<Integer> s) {
+    public void solve(TreeNode node, TreeSet<Integer> s) {
         if (node != null) {
             s.add(node.val);
             solve(node.left, s);
