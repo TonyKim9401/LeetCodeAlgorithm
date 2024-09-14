@@ -5,7 +5,7 @@ class Solution {
         int start = 0;
         int end = height.length-1;
 
-        while (start <= end) {
+        while (start < end) {
             int heightLeft = height[start];
             int heightRight = height[end];
 
