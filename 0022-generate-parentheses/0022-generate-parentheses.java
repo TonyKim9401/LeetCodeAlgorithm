@@ -3,9 +3,7 @@ class Solution {
     private StringBuilder sb = new StringBuilder();
     private int[] counts;
     public List<String> generateParenthesis(int n) {
-        counts = new int[2];
-        counts[0] = n;
-        counts[1] = n;
+        counts = new int[]{n, n};
         backtracking();
         return output;
     }
