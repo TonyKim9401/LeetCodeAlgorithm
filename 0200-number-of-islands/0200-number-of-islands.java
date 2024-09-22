@@ -1,27 +1,25 @@
 class Solution {
+    int output = 0;
     public int numIslands(char[][] grid) {
-        boolean[][] check = new boolean[grid.length][grid[0].length];
 
-        int output = 0;
         for (int i = 0; i < grid.length; i++) {
             for (int j = 0; j < grid[0].length; j++) {
-                if (grid[i][j] == '0') continue;
-                if (check[i][j]) continue;
-                output += 1;
-                islandCheck(i, j, grid, check);
+                if (grid[i][j] == '1') {
+                    output += 1;
+                    countIslands(i, j, grid);
+                }
             }
         }
         return output;
     }
 
-    public void islandCheck(int i, int j, char[][] grid, boolean[][] check) {
-        if (i < 0 || i > grid.length-1 || j < 0 || j > grid[0].length-1) return;
+    private void countIslands(int i, int j, char[][] grid) {
+        if (i < 0 || i >= grid.length || j < 0 || j >= grid[0].length) return;
         if (grid[i][j] == '0') return;
-        if (check[i][j]) return;
-        check[i][j] = true;
-        islandCheck(i+1, j, grid, check);
-        islandCheck(i-1, j, grid, check);
-        islandCheck(i, j+1, grid, check);
-        islandCheck(i, j-1, grid, check);
+        grid[i][j] = '0';
+        countIslands(i+1, j, grid);
+        countIslands(i-1, j, grid);
+        countIslands(i, j+1, grid);
+        countIslands(i, j-1, grid);
     }
 }
