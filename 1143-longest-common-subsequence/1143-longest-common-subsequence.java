@@ -9,7 +9,7 @@ class Solution {
                 if (curLength < dp[i]) curLength = dp[i];
                 else if (c == text1.charAt(i)) {
                     dp[i] = curLength + 1;
-                    output = Math.max(output, curLength + 1);
+                    output = Math.max(output, dp[i]);
                 }
             }
         }
