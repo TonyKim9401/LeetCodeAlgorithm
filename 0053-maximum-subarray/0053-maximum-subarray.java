@@ -7,7 +7,7 @@ class Solution {
         for (int num : nums) {
             if (total < 0) total = 0;
             total += num;
-            output = Math.max(total, output);
+            output = total > output ? total : output;
         }
         return output;
     }
