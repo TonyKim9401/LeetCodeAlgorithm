@@ -1,5 +1,16 @@
+class Pair {
+    int timestamp;
+    String val;
+
+    Pair(int timestamp, String val) {
+        this.timestamp = timestamp;
+        this.val = val;
+    }
+}
+
 class TimeMap {
-    private Map<String, TreeMap<Integer, String>> map;
+
+    Map<String, List<Pair>> map;
 
     public TimeMap() {
         map = new HashMap<>();
@@ -7,22 +18,35 @@ class TimeMap {
     
     public void set(String key, String value, int timestamp) {
         if (map.containsKey(key)) {
-            TreeMap<Integer, String> subMap = map.get(key);
-            subMap.put(timestamp, value);
+            map.get(key).add(new Pair(timestamp, value));
         } else {
-            TreeMap<Integer, String> subMap = new TreeMap<>();
-            subMap.put(timestamp, value);
-            map.put(key, subMap);
+            List<Pair> pairList = new ArrayList<>();
+            pairList.add(new Pair(timestamp, value));
+            map.put(key, pairList);
         }
     }
     
     public String get(String key, int timestamp) {
-        if (!map.containsKey(key)) return "";
-        Map<Integer, String> subMap = map.get(key);
-        
-        Map.Entry<Integer, String> entry = map.get(key).floorEntry(timestamp);
-        if (entry == null) return "";
-        return entry.getValue();
+        String output = "";
+        if (map.containsKey(key)) {
+            int start = 0;
+            int end = map.get(key).size() - 1;
+
+            List<Pair> list = map.get(key);
+            while (start <= end) {
+                int mid = (start + end) / 2;
+
+                if (list.get(mid).timestamp == timestamp) {
+                    return list.get(mid).val;
+                } else if (list.get(mid).timestamp < timestamp) {
+                    output = list.get(start).val;
+                    start = mid + 1;
+                } else {
+                    end = mid - 1;
+                }
+            }
+        }
+        return output;
     }
 }
 
