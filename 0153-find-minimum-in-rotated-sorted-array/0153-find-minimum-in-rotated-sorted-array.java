@@ -3,7 +3,9 @@ class Solution {
         
         int start = 0;
         int end = nums.length - 1;
-        int min = Integer.MAX_VALUE;
+
+        // 최솟값 저장 변수, 
+        int min = 5001;
 
         while (start <= end) {
             int mid = start + (end - start) / 2;
