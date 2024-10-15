@@ -34,7 +34,7 @@ class TimeMap {
 
             List<Pair> list = map.get(key);
             while (start <= end) {
-                int mid = (start + end) / 2;
+                int mid = start + (end - start) / 2;
 
                 if (list.get(mid).timestamp == timestamp) {
                     return list.get(mid).val;
