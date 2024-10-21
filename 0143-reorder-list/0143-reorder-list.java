@@ -18,25 +18,26 @@ class Solution {
             fast = fast.next.next;
         }
 
-        ListNode prev = null, curr = slow.next;
+        ListNode backSide = null;
+        ListNode curr = slow.next;
         slow.next = null;
+
         while (curr != null) {
-            ListNode next = curr.next;
-            curr.next = prev;
-            prev = curr;
-            curr = next;
+            ListNode temp = curr.next;
+            curr.next = backSide;
+            backSide = curr;
+            curr = temp;
         }
 
-        ListNode first = head, second = prev;
+        // slow = 1,2,3
+        // backSide = 5,4
+        ListNode first = head;
+        ListNode second = backSide;
         while (second != null) {
-            ListNode temp1 = first.next;
-            ListNode temp2 = second.next;
-
+            ListNode temp = first.next;
             first.next = second;
-            second.next = temp1;
-
-            first = temp1;
-            second = temp2;
+            first = second;
+            second = temp;
         }
     }
 }
