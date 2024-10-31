@@ -21,6 +21,7 @@ class Solution {
         }
 
         dummy.next = dummy.next.next;
+        
         return output.next;
     }
 }
