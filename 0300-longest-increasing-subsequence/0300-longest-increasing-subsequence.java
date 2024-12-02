@@ -2,9 +2,8 @@ class Solution {
     public int lengthOfLIS(int[] nums) {
         
         List<Integer> output = new ArrayList<>();
-
+        
         for (int num : nums) {
-
             int start = 0;
             int end = output.size();
 
