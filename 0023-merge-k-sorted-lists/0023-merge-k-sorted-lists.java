@@ -22,7 +22,6 @@ class Solution {
                 pq.offer(minNode.next);
             }
         }
-
         return dummy.next;
     }
 }
