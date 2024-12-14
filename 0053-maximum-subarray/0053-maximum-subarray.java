@@ -9,5 +9,7 @@ class Solution {
             output = total > output ? total : output;
         }
         return output;
+        // cardein 칼데인? 알고리즘
+        // subarray -> suffix & prefix
     }
 }
