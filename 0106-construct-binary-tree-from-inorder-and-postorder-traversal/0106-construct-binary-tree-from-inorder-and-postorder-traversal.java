@@ -21,9 +21,9 @@ class Solution {
         return builder(inorder, postorder, Integer.MIN_VALUE);
     }
 
-    public TreeNode builder(int[] inorder, int[] postorder, int stop) {
+    private TreeNode builder(int[] inorder, int[] postorder, int stop) {
         if (p < 0) return null;
-        if (i >= 0 && inorder[i] == stop) {
+        if (inorder[i] == stop) {
             i -= 1;
             return null;
         }
@@ -32,6 +32,7 @@ class Solution {
         p -= 1;
         node.right = builder(inorder, postorder, node.val);
         node.left = builder(inorder, postorder, stop);
+        
         return node;
     }
 }
