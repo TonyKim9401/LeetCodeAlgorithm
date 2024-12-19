@@ -7,16 +7,11 @@ class Solution {
         dp[1] = 1;
 
         for (int i = 2; i <= s.length(); i++) {
-        int oneDigit = Integer.parseInt(s.substring(i - 1, i));
-        int twoDigits = Integer.parseInt(s.substring(i - 2, i));
+            int oneDigit = Integer.parseInt(s.substring(i-1, i));
+            int twoDigits = Integer.parseInt(s.substring(i-2, i));
 
-        if (oneDigit >= 1 && oneDigit <= 9) {
-            dp[i] += dp[i - 1];
-        }
-
-        if (twoDigits >= 10 && twoDigits <= 26) {
-            dp[i] += dp[i - 2];
-        }
+            if (oneDigit > 0 && oneDigit < 10) dp[i] += dp[i-1];
+            if (twoDigits > 9 && twoDigits < 27) dp[i] += dp[i-2];
         }
 
         return dp[s.length()];
