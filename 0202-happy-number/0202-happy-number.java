@@ -1,21 +1,18 @@
 class Solution {
     public boolean isHappy(int n) {
-        
-        int happy = getHappy(n);
-
-        while (happy != 1 && happy != 4) {
-            happy = getHappy(happy);
+        while (n != 1 && n != 4) {
+            n = getHappy(n);
         }
-        return happy == 1;
+        return n == 1;
     }
 
     public int getHappy(int n) {
-        int result = 0;
+        int sum = 0;
         while (n > 0) {
             int rest = n % 10;
-            result += Math.pow(rest, 2);
-            n %= 10;
+            sum += Math.pow(rest, 2);
+            n /= 10;
         }
-        return result;
+        return sum;
     }
 }
