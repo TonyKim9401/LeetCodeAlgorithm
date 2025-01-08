@@ -1,16 +1,18 @@
 class NumArray {
-    private int[] nums;
+
+    private int[] target;
+
     public NumArray(int[] nums) {
-        this.nums = nums;
+        this.target = nums;
     }
     
     public int sumRange(int left, int right) {
-        int output = 0;
+        int sum = 0;
         while (left <= right) {
-            output += nums[left];
+            sum += target[left];
             left += 1;
         }
-        return output;
+        return sum;
     }
 }
 
