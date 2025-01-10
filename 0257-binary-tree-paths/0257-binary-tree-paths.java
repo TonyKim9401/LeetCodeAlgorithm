@@ -20,17 +20,18 @@ class Solution {
         return output;
     }
 
-    public void pathCheck(TreeNode node, String str, List<String> output) {
-        str += node.val;
+    public void pathCheck(TreeNode node, String inside, List<String> output) {
+        if (node == null) return;
+        inside += String.valueOf(node.val);
         if (node.left == null && node.right == null) {
-            output.add(str);
+            output.add(inside);
             return;
         }
         if (node.left != null) {
-            pathCheck(node.left, str+"->", output);
+            pathCheck(node.left, inside+"->", output);
         }
         if (node.right != null) {
-            pathCheck(node.right, str+"->", output);
+            pathCheck(node.right, inside+"->", output);
         }
     }
 }
