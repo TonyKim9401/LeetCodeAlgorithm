@@ -14,16 +14,13 @@
  * }
  */
 class Solution {
+    // 3 -> root
+    // 9 20
+    // 15 7
     private int output = 0;
     public int sumOfLeftLeaves(TreeNode root) {
         // TC: O(n)
         // SC: O(n) -> recursive stack
-
-        // 1. output global variable
-        // 2. DFS -> TreeNode node
-        // 3-1. root == null return;
-        // 3-2. leftNode (node.left)
-        // 3-3. rightNode (node.right)
         dfs(root);
         return output;
     }
