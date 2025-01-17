@@ -14,33 +14,20 @@
  * }
  */
 class Solution {
-    // 3 -> root
-    // 9 20
-    // 15 7
-    private int output = 0;
     public int sumOfLeftLeaves(TreeNode root) {
-        // TC: O(n)
-        // SC: O(n) -> recursive stack
-        dfs(root);
+        int output = 0;
+        Queue<TreeNode> q = new LinkedList<>();
+        q.offer(root);
+
+        while (!q.isEmpty()) {
+            TreeNode node = q.poll();
+            if (node.left != null) {
+                if (node.left.left == null &&
+                    node.left.right == null) output += node.left.val;
+                else q.offer(node.left);
+            }
+            if (node.right != null) q.offer(node.right);
+        }
         return output;
-    }
-
-    private void dfs(TreeNode node) {
-        if (node == null) return;
-
-        if (node.left != null) {
-            dfsLeft(node.left);
-        }
-
-        if (node.right != null) dfs(node.right);
-    }
-
-    private void dfsLeft(TreeNode leftNode) {
-        if (leftNode.left == null &&
-            leftNode.right == null) {
-                output += leftNode.val;
-        } else {
-            dfs(leftNode);
-        }
     }
 }
