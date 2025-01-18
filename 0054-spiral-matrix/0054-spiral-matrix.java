@@ -1,42 +1,44 @@
 class Solution {
     public List<Integer> spiralOrder(int[][] matrix) {
+        // n = 0, s = matrix.length - 1
+        // e = matrix[0].length - 1, w = 0
+
+        // n <= south && w <= e
+
         List<Integer> output = new ArrayList<>();
-        int north = 0;
-        int south = matrix.length - 1;
-        int east = matrix[0].length - 1;
-        int west = 0;
 
-        while (north <= south && west <= east) {
-            int j = west;
-            while (j <= east) {
-                output.add(matrix[north][j]);
-                j++;
+        int n = 0;
+        int s = matrix.length - 1;
+        int e = matrix[0].length - 1;
+        int w = 0;
+
+        while (n <= s && w <= e) {
+            int west = w;
+            while (west <= e) {
+                output.add(matrix[n][west++]);
             }
-            north++;
+            n += 1;
 
-            int i = north;
-            while (i <= south) {
-                output.add(matrix[i][east]);
-                i++;
+            int north = n;
+            while (north <= s) {
+                output.add(matrix[north++][e]);
             }
-            east--;
+            e -= 1;
 
-            if (north <= south) {
-                j = east;
-                while (j >= west) {
-                    output.add(matrix[south][j]);
-                    j--;
+            if (n <= s) {
+                int east = e;
+                while (east >= w) {
+                    output.add(matrix[s][east--]);
                 }
-                south--;
+                s -= 1;
             }
 
-            if (west <= east) {
-                i = south;
-                while (i >= north) {
-                    output.add(matrix[i][west]);
-                    i--;
+            if (w <= e) {
+                int south = s;
+                while (south >= n) {
+                    output.add(matrix[south--][w]);
                 }
-                west++;
+                w += 1;
             }
         }
         return output;
