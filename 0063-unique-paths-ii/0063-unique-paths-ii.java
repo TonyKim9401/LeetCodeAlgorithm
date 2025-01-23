@@ -1,12 +1,9 @@
 class Solution {
     public int uniquePathsWithObstacles(int[][] grid) {
         // [0][0][0]
-        // [0][1][0]
+        // [1][1][1]
         // [0][0][0]
         
-        // [1][1][1]
-        // [1][0][0]
-        // [1][0][0]
         if (grid[0][0] == 1) return 0;
         
         int[][] paths = new int[grid.length][grid[0].length];
