@@ -1,35 +1,27 @@
 class Solution {
     public int minEatingSpeed(int[] piles, int h) {
-         // TC: O(log n) * O(n) -> O(n log n)
-         // SC: O(1)
-        Arrays.sort(piles);
+        int minSpeed = 1;
+        int maxSpeed = 0;
+
+        for (int pile : piles) maxSpeed = Math.max(maxSpeed, pile);
         
-        int count = 0;
+        while (minSpeed < maxSpeed) {
+            int midSpeed = minSpeed + (maxSpeed - minSpeed) / 2;
 
-        int start = 1;
-        int end = piles[piles.length - 1];
-        int output = 0;
-
-        while (start <= end) {
-            int k = start + (end - start) / 2;
-            count = 0;
-
-            for (int j = 0; j < piles.length; j++) {
-                if (piles[j] <= k) {
-                    count += 1;
-                    continue;
-                }
-                if (count > h) break;
-                count += piles[j] / k;
-                if (piles[j] % k != 0) count += 1;
-            }
-            if (count <= h) {
-                output = k;
-                end = k - 1;
-            } else {
-                start = k + 1;
-            }
+            if (canEatInTime(piles, h, midSpeed)) maxSpeed = midSpeed;
+            else minSpeed = midSpeed + 1;
         }
-        return output;
+
+        return minSpeed;
+    }
+
+    private boolean canEatInTime(int[] piles, int h, int speed) {
+        int totalHours = 0;
+
+        for (int pile : piles) {
+            totalHours += (pile + speed - 1) / speed;
+        }
+
+        return totalHours <= h;
     }
 }
