@@ -1,5 +1,7 @@
 class Solution {
     public boolean canWinNim(int n) {
-        return n%4 != 0;
+        // TC: O(1)
+        // SC: O(1)
+        return n % 4 != 0;
     }
 }
