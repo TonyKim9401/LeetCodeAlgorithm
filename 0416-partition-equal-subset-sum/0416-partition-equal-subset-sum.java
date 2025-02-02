@@ -5,6 +5,7 @@ class Solution {
         if (sum % 2 != 0) return false;
         
         sum /= 2;
+
         int[][] dp = new int[nums.length][sum + 1];
         for (int[] inside : dp) {
             Arrays.fill(inside, -1);
@@ -16,6 +17,11 @@ class Solution {
     private boolean find(int[] nums, int idx, int target, int[][] dp) {
         if (target == 0) return true;
         if (idx == 0) return nums[idx] == target; 
+
+        // -1 = not calculated
+        // 1 = true
+        // 0 = false
+        
         if (dp[idx][target] != -1) return dp[idx][target] == 1;
 
         boolean notSub = find(nums, idx - 1, target, dp);
