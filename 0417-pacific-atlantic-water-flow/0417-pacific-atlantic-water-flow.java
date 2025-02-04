@@ -29,7 +29,9 @@ class Solution {
     }
 
     private void dfs(int i, int j, boolean[][] visit, int preValue, int[][] heights) {
-        if (i < 0 || j < 0 || i == heights.length || j == heights[0].length || visit[i][j] || preValue > heights[i][j]) return;
+        if (i < 0 || j < 0 || i == heights.length || 
+            j == heights[0].length || visit[i][j] || 
+            preValue > heights[i][j]) return;
 
         visit[i][j] = true;
         dfs(i + 1, j, visit, heights[i][j], heights);
