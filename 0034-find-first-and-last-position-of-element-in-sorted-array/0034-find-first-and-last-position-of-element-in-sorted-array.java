@@ -9,7 +9,6 @@ class Solution {
 
         if (nums.length == 0) return output;
 
-        // get start value
         while (start <= end) {
             int mid = start + (end - start) / 2;
 
