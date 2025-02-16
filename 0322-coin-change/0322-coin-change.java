@@ -1,6 +1,7 @@
 class Solution {
     public int coinChange(int[] coins, int amount) {
-        
+        // TC: O(amount*n)
+        // SC: O(amount)
         int[] minCoins = new int[amount + 1];
         Arrays.fill(minCoins, amount + 1);
 
