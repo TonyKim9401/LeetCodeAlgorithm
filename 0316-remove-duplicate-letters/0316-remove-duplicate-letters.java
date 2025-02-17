@@ -1,9 +1,5 @@
 class Solution {
     public String removeDuplicateLetters(String s) {
-        // stack -> setting return value
-        // set -> checking duplication
-        // int[26] -> check how many times letters are appered
-
         Stack<Character> stack = new Stack<>();
         Set<Character> set = new HashSet<>();
         int[] letterCount = new int[26];
