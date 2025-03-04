@@ -14,17 +14,21 @@
  * }
  */
 class Solution {
-    private List<Integer> nums = new ArrayList<>();
+    private int output = 0;
+    private int sequence = 0;
     public int kthSmallest(TreeNode root, int k) {
-        visitTreeNode(root);
-        return nums.get(k-1);
+        sequence = k;
+        dfs(root);
+        return output;
     }
 
-    public void visitTreeNode(TreeNode node) {
+    private void dfs(TreeNode node) {
         if (node == null) return;
-
-        visitTreeNode(node.left);
-        nums.add(node.val);
-        visitTreeNode(node.right);
+        
+        dfs(node.left);
+        sequence -= 1;
+        if (sequence == 0) output = node.val;
+        
+        dfs(node.right);
     }
 }
