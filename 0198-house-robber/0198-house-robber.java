@@ -1,14 +1,21 @@
 class Solution {
+    private int[] dp;
     public int rob(int[] nums) {
-        int maxMoney = 0;
-        int tempMoney = 0;
+        dp = new int[nums.length+1];
+        Arrays.fill(dp, -1);
+        return dfs(nums, 0);
+    }
 
-        for (int i = 0; i < nums.length; i++) {
-            int currentMoney = Math.max(maxMoney, tempMoney + nums[i]);
-            tempMoney = maxMoney;
-            maxMoney = currentMoney;
-        }
+    private int dfs(int[] nums, int idx) {
+        if (idx >= nums.length) return 0;
 
-        return maxMoney;
+        if (dp[idx] != -1) return dp[idx];
+        
+        int notRobbing = dfs(nums, idx + 1);
+        int robbing = nums[idx] + dfs(nums, idx + 2);
+
+        dp[idx] = Math.max(notRobbing, robbing);
+
+        return dp[idx];
     }
 }
