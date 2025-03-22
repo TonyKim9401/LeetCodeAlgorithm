@@ -24,13 +24,12 @@ class Solution {
         if (node == null) return null;
         if (map.containsKey(node.val)) return map.get(node.val);
 
-        Node clone = new Node(node.val);
-        map.put(clone.val, clone);
+        Node copy = new Node(node.val);
+        map.put(node.val, copy);
 
         for (Node neighbor : node.neighbors) {
-            clone.neighbors.add(cloneGraph(neighbor));
+            copy.neighbors.add(cloneGraph(neighbor));
         }
-
-        return clone;
+        return copy;
     }
 }
