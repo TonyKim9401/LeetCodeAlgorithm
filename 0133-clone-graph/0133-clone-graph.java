@@ -25,11 +25,12 @@ class Solution {
         if (map.containsKey(node.val)) return map.get(node.val);
 
         Node copy = new Node(node.val);
-        map.put(node.val, copy);
+        map.put(copy.val, copy);
 
         for (Node neighbor : node.neighbors) {
             copy.neighbors.add(cloneGraph(neighbor));
         }
+
         return copy;
     }
 }
