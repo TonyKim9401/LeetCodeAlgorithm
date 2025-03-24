@@ -23,13 +23,13 @@ class Solution {
                 isSubtree(root.right, subRoot);
     }
 
-    private boolean checkTree(TreeNode root, TreeNode sub) {
-        if (root == null || sub == null) {
-            return root == null && sub == null;
+    private boolean checkTree(TreeNode node, TreeNode subNode) {
+        if (node == null || subNode == null) {
+            return node == null && subNode == null;
         }
 
-        if (root.val != sub.val) return false;
-        return checkTree(root.left, sub.left) &&
-                checkTree(root.right, sub.right);
+        if (node.val != subNode.val) return false;
+        return checkTree(node.left, subNode.left) &&
+                checkTree(node.right, subNode.right);
     }
 }
