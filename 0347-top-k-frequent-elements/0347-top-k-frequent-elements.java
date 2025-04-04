@@ -1,22 +1,9 @@
 class Solution {
     public int[] topKFrequent(int[] nums, int k) {
-        
-        // nums = [1,1,1,2,2,3], k = 2
-        // 1, 3
-        // 2, 2
-        // 3, 1
-        
         // O(nlogn)
         // Java internally uses mergesort, quicksort(PriorityQueue)
         Map<Integer, Integer> map = new HashMap<>();
-        for (int num : nums) {
-            if (map.containsKey(num)) {
-                int count = map.get(num);
-                map.put(num, count+1);
-            } else {
-                map.put(num, 1);
-            }
-        }
+        for (int num : nums) map.put(num, map.getOrDefault(num, 1) + 1);
 
         // key values from the map
         List<Integer> keyList = new ArrayList<>(map.keySet());
@@ -28,5 +15,6 @@ class Solution {
         }
 
         return output;
+
     }
 }
