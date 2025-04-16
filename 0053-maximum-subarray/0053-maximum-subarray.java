@@ -1,15 +1,12 @@
 class Solution {
     public int maxSubArray(int[] nums) {
-        int total = 0;
-        int output = nums[0];
-
+        int output = 0;
+        int max = Integer.MIN_VALUE;
         for (int num : nums) {
-            if (total < 0) total = 0;
-            total += num;
-            output = total > output ? total : output;
+            if (output < 0) output = 0;
+            output += num;
+            max = Math.max(max, output);
         }
-        return output;
-        // cardein 칼데인? 알고리즘
-        // subarray -> suffix & prefix
+        return max;
     }
 }
