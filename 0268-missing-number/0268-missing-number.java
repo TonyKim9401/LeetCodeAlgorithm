@@ -7,9 +7,8 @@ class Solution {
         int max = nums.length;
         int sum = max * (max+1)/2;
 
-        for (int num : nums) {
-            sum -= num;
-        }
+        for (int num : nums) sum -= num;
+        
         return sum;
     }
 }
