@@ -30,6 +30,6 @@ class Solution {
             }
         }
         
-        return max + 1;
+        return max == 0 ? -1 : max + 1;
     }
 }
