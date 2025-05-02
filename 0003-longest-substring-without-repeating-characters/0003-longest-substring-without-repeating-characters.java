@@ -11,6 +11,7 @@ class Solution {
                 current += 1;
             }
             checkRepeat[idx] = true;
+            
             max = Math.max(max, i - current + 1);
         }
         return max;
