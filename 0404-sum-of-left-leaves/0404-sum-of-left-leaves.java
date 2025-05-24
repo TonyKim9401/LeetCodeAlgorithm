@@ -16,34 +16,18 @@
 class Solution {
     private int output = 0;
     public int sumOfLeftLeaves(TreeNode root) {
-        // TC: O(n)
-        // SC: O(n) -> recursive stack
-
-        // 1. output global variable
-        // 2. DFS -> TreeNode node
-        // 3-1. root == null return;
-        // 3-2. leftNode (node.left)
-        // 3-3. rightNode (node.right)
-        dfs(root);
+        dfs(root, false);
         return output;
     }
 
-    private void dfs(TreeNode node) {
+    private void dfs(TreeNode node, boolean leftCheck) {
         if (node == null) return;
 
-        if (node.left != null) {
-            dfsLeft(node.left);
+        if (node.left == null && node.right == null && leftCheck) {
+            output += node.val;
         }
 
-        if (node.right != null) dfs(node.right);
-    }
-
-    private void dfsLeft(TreeNode leftNode) {
-        if (leftNode.left == null &&
-            leftNode.right == null) {
-                output += leftNode.val;
-        } else {
-            dfs(leftNode);
-        }
+        dfs(node.left, true);
+        dfs(node.right, false);
     }
 }
