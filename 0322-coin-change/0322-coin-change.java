@@ -1,19 +1,31 @@
 class Solution {
+
     public int coinChange(int[] coins, int amount) {
-        // TC: O(amount*n)
-        // SC: O(amount)
-        int[] minCoins = new int[amount + 1];
-        Arrays.fill(minCoins, amount + 1);
+        
+        int[] dp = new int[amount+1];
+        Arrays.fill(dp, -1);
+        int output = dfs(coins, amount, dp);
 
-        minCoins[0] = 0;
+        if (output == Integer.MAX_VALUE) return -1;
 
-        for (int i = 1; i <= amount; i++) {
-            for (int j = 0; j < coins.length; j++) {
-                if (i - coins[j] >= 0) {
-                    minCoins[i] = Math.min(minCoins[i], 1 + minCoins[i - coins[j]]);
-                }
+        return output;
+    }
+
+    private int dfs(int[] coins, int amount, int[] dp) {
+        if (amount == 0) return 0;
+        if (dp[amount] != -1) return dp[amount];
+        int output = Integer.MAX_VALUE;
+
+        for (int i = 0; i < coins.length; i++) {
+            if (amount - coins[i] >= 0) {
+                int res = dfs(coins, amount - coins[i], dp);
+                if (res == Integer.MAX_VALUE) continue;
+                output = Math.min(res + 1, output);
             }
         }
-        return minCoins[amount] != amount + 1 ? minCoins[amount] : -1;
+        
+        dp[amount] = output;
+
+        return dp[amount];
     }
 }
