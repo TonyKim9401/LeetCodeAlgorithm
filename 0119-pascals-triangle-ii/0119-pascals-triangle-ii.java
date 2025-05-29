@@ -7,33 +7,23 @@ class Solution {
         // rowIndex = 6
         // [1, 6, 15, 20, 15, 6, 1]
 
-        List<List<Integer>> output = new ArrayList<>();
+        List<Integer> prev = new ArrayList<>();
+        prev.add(1);
+        if (rowIndex == 0) return prev;
+        prev.add(1);
+        if (rowIndex == 1) return prev;
 
-        List<Integer> inside = new ArrayList<>();
-        inside.add(1); 
-        output.add(inside);
-        if (rowIndex == 0) return output.get(rowIndex);
-
-        inside = new ArrayList<>();
-        inside.add(1);
-        inside.add(1);
-        output.add(inside);
-        if (rowIndex == 1) return output.get(rowIndex);
-
+        List<Integer> next;
         for (int i = 2; i <= rowIndex; i++) {
-            inside = new ArrayList<>();
-            inside.add(1);
-            List<Integer> prevInside = output.get(i - 1);
-
+            next = new ArrayList<>();
+            next.add(1);
             for (int j = 1; j < i; j++) {
-                int val = prevInside.get(j-1) + prevInside.get(j);
-                inside.add(val);
+                next.add(prev.get(j-1) + prev.get(j));
             }
-
-            inside.add(1);
-            output.add(inside);
+            next.add(1);
+            prev = next;
         }
 
-        return output.get(rowIndex);
+        return prev;
     }
 }
