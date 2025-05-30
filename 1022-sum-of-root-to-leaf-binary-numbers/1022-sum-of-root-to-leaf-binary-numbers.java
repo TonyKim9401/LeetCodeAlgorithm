@@ -14,23 +14,23 @@
  * }
  */
 class Solution {
-    private int sum = 0;
+    private StringBuilder sb = new StringBuilder();
+    private int output = 0;
     public int sumRootToLeaf(TreeNode root) {
-        StringBuilder sb = new StringBuilder();
-        backtracking(root, sb);
-        return sum;
+        dfs(root);
+        return output;
     }
 
-    public void backtracking(TreeNode node, StringBuilder sb) {
+    private void dfs(TreeNode node) {
         if (node == null) return;
-        sb.append(String.valueOf(node.val));
+        sb.append(node.val);
 
         if (node.left == null && node.right == null) {
-            sum += Integer.valueOf(sb.toString(), 2);
+            output += Integer.parseInt(sb.toString(), 2);
         } else {
-            backtracking(node.left, sb);
-            backtracking(node.right, sb);
+            dfs(node.left);
+            dfs(node.right);
         }
-        sb.deleteCharAt(sb.length() - 1);
+        sb.setLength(sb.length() - 1);
     }
 }
