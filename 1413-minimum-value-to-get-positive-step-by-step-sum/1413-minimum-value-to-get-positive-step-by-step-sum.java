@@ -1,13 +1,13 @@
 class Solution {
     public int minStartValue(int[] nums) {
-        int prefixSum = 0;
-        int minPrefix = 0;
+        int sum = 0;
+        int output = 0;
 
         for (int num : nums) {
-            prefixSum += num;
-            minPrefix = Math.min(minPrefix, prefixSum);
+            sum += num;
+            output = Math.min(output, sum);
         }
 
-        return 1 - minPrefix;
+        return 1 - output;
     }
 }
