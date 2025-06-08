@@ -14,18 +14,15 @@
  * }
  */
 class Solution {
-    private boolean output = false;
     public boolean hasPathSum(TreeNode root, int targetSum) {
-        dfs(root, targetSum);
-        return output;
-    }
+        if (root == null) return false;
 
-    public void dfs(TreeNode node, int targetSum) {
-        if (node == null) return;
+        targetSum -= root.val;
+        if (root.left == null && 
+            root.right == null && // treeNode must be the last leaf of the binary tree
+            targetSum == 0) return true;
 
-        targetSum -= node.val;
-        dfs(node.left, targetSum);
-        dfs(node.right, targetSum);
-        if (node.left == null && node.right == null && targetSum == 0) output = true;
+        return hasPathSum(root.left, targetSum) ||
+                hasPathSum(root.right, targetSum);
     }
 }
