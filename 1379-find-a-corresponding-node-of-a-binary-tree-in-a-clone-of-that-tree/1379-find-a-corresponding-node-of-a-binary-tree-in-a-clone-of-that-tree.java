@@ -11,18 +11,18 @@
 class Solution {
     private TreeNode output;
     public final TreeNode getTargetCopy(final TreeNode original, final TreeNode cloned, final TreeNode target) {
-        dfs(cloned, target);
+        dfs(original, cloned, target);
         return output;
     }
 
-    private void dfs(TreeNode node, TreeNode target) {
+    private void dfs(TreeNode orig, TreeNode node, TreeNode target) {
         if (node == null) return;
 
-        if (node.val == target.val) {
+        if (orig == target) {
             output = node;
             return;
         }
-        dfs(node.left, target);
-        dfs(node.right, target);
+        dfs(orig.left, node.left, target);
+        dfs(orig.right, node.right, target);
     }
 }
