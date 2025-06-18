@@ -13,7 +13,10 @@ class Solution {
         ListNode output = new ListNode(0, head);
         ListNode dummy = output;
 
-        for (int i = 0; i < n; i++) head = head.next;
+        while (n > 0) {
+            head = head.next;
+            n -=1 ;
+        }
 
         while (head != null) {
             head = head.next;
@@ -21,7 +24,6 @@ class Solution {
         }
 
         dummy.next = dummy.next.next;
-        
         return output.next;
     }
 }
