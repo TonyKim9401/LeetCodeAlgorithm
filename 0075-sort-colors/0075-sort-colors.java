@@ -17,7 +17,7 @@ class Solution {
                 i = j - 1;
                 value += 1;
             }
-            if (value == 3) break;
+            if (value == 2) break;
         }
     }
 
