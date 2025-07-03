@@ -13,9 +13,8 @@ class Solution {
         ListNode output = head;
 
         while (head != null && head.next != null) {
-            if (head.val == head.next.val) {
+            while (head.next != null && head.val == head.next.val) {
                 head.next = head.next.next;
-                continue;
             }
             head = head.next;
         }
