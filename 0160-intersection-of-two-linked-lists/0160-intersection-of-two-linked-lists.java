@@ -11,15 +11,16 @@
  */
 public class Solution {
     public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
-        if (headA == null || headB == null) return null;
+        if (headA == null && headB == null) return null;
 
         ListNode a = headA;
         ListNode b = headB;
 
         while (a != b) {
-            a = a == null ? headB : a.next;
-            b = b == null ? headA : b.next;
+            a = a != null ? a.next : headB;
+            b = b != null ? b.next : headA;
         }
+
         return a;
     }
 }
