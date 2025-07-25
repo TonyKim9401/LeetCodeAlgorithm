@@ -1,9 +1,10 @@
+import java.util.*;
+
 class Solution {
     public void reverseString(char[] s) {
-        for (int i = 0; i < s.length/2; i++) {
-            char temp = s[i];
-            s[i] = s[s.length-1-i];
-            s[s.length-1-i] = temp;
+        String str = new String(s);
+        for (int i = 0; i < s.length; i++) {
+            s[i] = str.charAt(str.length() - 1 - i);
         }
     }
 }
