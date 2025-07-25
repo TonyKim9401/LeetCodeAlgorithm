@@ -1,28 +1,26 @@
 class Solution {
     public String reverseWords(String s) {
-        List<String> list = new ArrayList<>();
-        s = s.trim();
-
+        int j;
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < s.length(); i++) {
-            char c = s.charAt(i);
-            if (c == ' ') continue;
+        int i = s.length() - 1;
 
-            sb = new StringBuilder();
-            while (i < s.length() && c != ' ') {
-                sb.append(c);
-                i += 1;
-                if (i < s.length()) c = s.charAt(i);
+        while (i >= 0) {
+            // skip trailing spaces
+            if (s.charAt(i) == ' ') {
+                i--;
+                continue;
             }
-            list.add(sb.toString());
+
+            j = i;
+
+            // move to the start of the word
+            while (i >= 0 && s.charAt(i) != ' ') {
+                i--;
+            }
+
+            sb.append(s.substring(i + 1, j + 1)).append(' ');
         }
 
-        sb = new StringBuilder();
-        Collections.reverse(list);
-        for (String str : list) {
-            sb.append(str).append(' ');
-        }
-
-        return sb.toString().trim();
+        return sb.toString().trim();  // remove last space
     }
 }
