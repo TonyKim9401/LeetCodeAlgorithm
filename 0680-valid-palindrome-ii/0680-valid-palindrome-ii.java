@@ -11,14 +11,11 @@ class Solution {
 
         if (l >= r) return true;
 
-        return subValidation(s.substring(l+1, r+1)) ||
-                subValidation(s.substring(l, r));
+        return subValidation(s, l+1, r) ||
+                subValidation(s, l, r-1);
     }
 
-    private boolean subValidation(String sub) {
-        int l = 0;
-        int r = sub.length() - 1;
-
+    private boolean subValidation(String sub, int l, int r) {
         while(l < r) {
             if (sub.charAt(l) != sub.charAt(r)) return false;
             l += 1;
