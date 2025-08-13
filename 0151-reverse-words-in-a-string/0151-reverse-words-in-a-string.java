@@ -7,7 +7,7 @@ class Solution {
         while (i >= 0) {
             // skip trailing spaces
             if (s.charAt(i) == ' ') {
-                i--;
+                i -= 1;
                 continue;
             }
 
@@ -15,7 +15,7 @@ class Solution {
 
             // move to the start of the word
             while (i >= 0 && s.charAt(i) != ' ') {
-                i--;
+                i -= 1;
             }
 
             sb.append(s.substring(i + 1, j + 1)).append(' ');
