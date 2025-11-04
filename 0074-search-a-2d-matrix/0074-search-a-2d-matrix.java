@@ -3,8 +3,9 @@ class Solution {
         int end = matrix[0].length - 1;
 
         for (int i = 0; i < matrix.length; i++) {
-            if (matrix[i][end] >= target) {
-                if (matrix[i][end] == target) return true;
+            if (matrix[i][end] == target) return true;
+            if (matrix[i][end] > target) {
+                
                 int start = 0;
 
                 while (start < end) {
