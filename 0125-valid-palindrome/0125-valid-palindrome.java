@@ -3,15 +3,11 @@ class Solution {
         StringBuilder sb = new StringBuilder();
 
         for (char c : s.toCharArray()) {
-            if (c >= 'a' && c <= 'z' ||
-                c >= 'A' && c <= 'Z' ||
-                c >= '0' && c <= '9') {
-                sb.append(Character.toLowerCase(c));
-            }
+            if (c >= 'a' && c <= 'z') sb.append(c);
+            if (c >= '0' && c <= '9') sb.append(c);
+            if (c >= 'A' && c <= 'Z') sb.append((char) (c + 32));
         }
-        String ogirinal = sb.toString();
-        String reverse = sb.reverse().toString();
-
-        return ogirinal.equals(reverse);
+        
+        return sb.toString().equals(sb.reverse().toString());
     }
 }
